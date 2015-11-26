@@ -1,2 +1,2 @@
 # 1303101-6
-the system of managing paper
+科研成果管理系统
