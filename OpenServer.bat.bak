@@ -1,0 +1,3 @@
+@echo off
+python.exe C:\mysite\manage.py runserver
+pause
