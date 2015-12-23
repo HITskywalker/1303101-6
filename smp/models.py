@@ -1,41 +1,48 @@
-#coding=utf-8
+# coding=utf-8
 from django.db import models
 from django.contrib.auth.models import User
+
+
 # Create your models here.
-        
+
 class Auther(models.Model):
-    name = models.CharField(max_length= 30)
-    institution = models.CharField(max_length= 30)
-    acount = models.IntegerField(default = 0)
-    
+    name = models.CharField(max_length=30)
+    institution = models.CharField(max_length=30)
+    acount = models.IntegerField(default=0)
+
+
 class Jounery(models.Model):
-    J_name=models.CharField(max_length =30)
-    jcount = models.IntegerField(default = 0)
+    J_name = models.CharField(max_length=30)
+    jcount = models.IntegerField(default=0)
 
 
 class Paper(models.Model):
-    user = models. ForeignKey(User)
-    MauthorID = models.IntegerField(default = 0)
-    auther =  models.ManyToManyField(Auther)
+    user = models.ForeignKey(User)
+    MauthorID = models.IntegerField(default=0)
+    auther = models.ManyToManyField(Auther)
     jounery = models.ForeignKey(Jounery)
     timestamp = models.DateTimeField(auto_now_add=True)
-    pdf = models.FileField(upload_to = './smp/static/upload') 
-    pdfname = models.CharField(max_length = 30)
+    pdf = models.FileField(upload_to='./smp/static/upload')
+    pdfname = models.CharField(max_length=30)
+
+
 class prauthor(models.Model):
-	user = models.OneToOneField(User)
-	name = models.CharField(max_length=30)
+    user = models.OneToOneField(User)
+    name = models.CharField(max_length=30)
+
 
 class middlepr(models.Model):
-	author = models.ForeignKey(prauthor)
-	cate = models.IntegerField()
+    author = models.ForeignKey(prauthor)
+    cate = models.IntegerField()
+
 
 class Prize(models.Model):
     mpr = models.ManyToManyField(middlepr)
     user = models.ManyToManyField(User)
     name = models.CharField(max_length=100)
     level = models.CharField(max_length=40)
-    #change here
-    cate = models.IntegerField(default = 5)
+    # change here
+    cate = models.IntegerField(default=5)
     rank = models.CharField(max_length=10)
     gaintime = models.DateField()
 
@@ -43,16 +50,22 @@ class Prize(models.Model):
         return unicode(self.user)
 
     def __eq__(self, other):
-        return self.name == other.name and self.level == other.level and\
+        return self.name == other.name and self.level == other.level and \
                self.rank == other.rank and self.gaintime == other.gaintime
 
+
 class zlauthor(models.Model):
-	user = models.OneToOneField(User)
-	name = models.CharField(max_length=30)
+    user = models.OneToOneField(User)
+    name = models.CharField(max_length=30)
+
+    def __unicode__(self):
+        return self.name
+
 
 class middlezl(models.Model):
-	author = models.ForeignKey(zlauthor)
-	cate = models.IntegerField()
+    author = models.ForeignKey(zlauthor)
+    cate = models.IntegerField()
+
 
 class zhuanli(models.Model):
     mzl = models.ManyToManyField(middlezl)
@@ -65,12 +78,14 @@ class zhuanli(models.Model):
 
 
 class zzauthor(models.Model):
-	user = models.OneToOneField(User)
-	name = models.CharField(max_length=30)
+    user = models.OneToOneField(User)
+    name = models.CharField(max_length=30)
+
 
 class middlezz(models.Model):
-	author = models.ForeignKey(zzauthor)
-	cate = models.IntegerField()
+    author = models.ForeignKey(zzauthor)
+    cate = models.IntegerField()
+
 
 class zhuanzhu(models.Model):
     mzz = models.ManyToManyField(middlezz)
@@ -78,6 +93,8 @@ class zhuanzhu(models.Model):
     name = models.CharField(max_length=100)
     institution = models.CharField(max_length=30)
     gaintime = models.DateField()
+
+
 """
 class zzauthor(models.Model):
 	user = models.OneToOneField(User)

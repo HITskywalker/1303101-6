@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.db import models
 from django.contrib.auth.models import User
+from smp.models import Paper, Auther, Jounery, Prize,zzauthor,zhuanzhu,prauthor,zhuanli,zlauthor,middlezl,middlepr,middlezz
 ProjectSource = (
     ('1.0','国家自然科学基金'),
     ('0.9','国家863计划'),
@@ -20,19 +21,10 @@ class CommonInfo(models.Model):
     class Meta:
         abstract = True
 
-class Member(models.Model):
-    user = models.OneToOneField(User)
-    name = models.CharField('姓名',max_length=50)
-    age = models.CharField('userid',max_length=50)
-    class Meta:
-        db_table = 'member'
-
-    def __unicode__(self):
-        return self.name
 
 class Project(CommonInfo):
     user = models.ManyToManyField(User)
-    project_member = models.ManyToManyField(Member)
+    project_member = models.ManyToManyField(zlauthor)
 
     class Meta:
         db_table = 'project'

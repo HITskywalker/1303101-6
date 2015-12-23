@@ -13,19 +13,17 @@ import json
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
+from smp.models import Paper, Auther, Jounery, Prize,zzauthor,zhuanzhu,prauthor,zhuanli,zlauthor
 
 def create_project2(request):
-    Mem = Member.objects.all()
-    name = []
-    age = []
-    for i in range(len(Mem)):
-        name.append(Mem[i].name)
-        age.append(Mem[i].age)
+    Mem = zlauthor.objects.all()
+    name = [tmp.name for tmp in Mem ]
+    age = [tmp.user.id for tmp in Mem]
     if(request.POST):
         names = request.POST['nameid']
         member_names = names.split(',')
         try:
-            instance = Project.objects.get(project_num=int(request.POST['project_num']))
+            instance = Project.objects.get(project_num= int(request.POST['project_num']))
             return HttpResponse("Already Exists")
         except Project.DoesNotExist:
             instance = Project(
@@ -38,12 +36,11 @@ def create_project2(request):
                 end_time= request.POST['end_time']
             )
             instance.save()
-            for i in range(len(member_names)):
-            #change here
-                tmpmem = Member.objects.get(id=member_names[i])
-                user = tmpmem.user
-                instance.user.add(user)
-                instance.project_member.add(Member.objects.get(id=int(member_names[i])))
+            for item in member_names:
+                tmpmem = User.objects.get(id=int(item))
+                instance.user.add(tmpmem)
+                user = tmpmem.zlauthor
+                instance.project_member.add(user)
             instance.save()
             return HttpResponseRedirect("/project/plist/")
     else:
@@ -51,19 +48,16 @@ def create_project2(request):
 
 def list_project(request):
     uset = request.user
-    list_items = Project.objects.filter(user = uset)
+    list_items = Project.objects.all()
     paginator = Paginator(list_items ,10)
-
     try:
         page = int(request.GET.get('page', '1'))
     except ValueError:
         page = 1
-
     try:
         list_items = paginator.page(page)
     except :
         list_items = paginator.page(paginator.num_pages)
-
     t = get_template('project/list_project.html')
     c = RequestContext(request,locals())
     return HttpResponse(t.render(c))
@@ -80,9 +74,7 @@ def view_project(request, id):
     return HttpResponse(t.render(c))
 
 def edit_project(request, id):
-
     project_instance = Project.objects.get(id=id)
-
     form = ProjectForm(request.POST or None, instance = project_instance)
     if request.POST and form.is_valid():
         form.save()

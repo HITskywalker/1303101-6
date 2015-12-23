@@ -62,12 +62,12 @@ class ProjectIdentifyForm(forms.ModelForm):
         self.fields['identify_text'].widget.attrs.update({'class' : 'form-control'})
 
 
-class MemberForm(forms.ModelForm):
-
-    class Meta:
-        model = Member
-        exclude = ['age','user'] # uncomment this line and specify any field to exclude it from the form
-
-    def __init__(self, *args, **kwargs):
-        super(MemberForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs.update({'class' : 'form-control'})
+# class MemberForm(forms.ModelForm):
+#
+#     class Meta:
+#         model = Member
+#         exclude = ['age','user'] # uncomment this line and specify any field to exclude it from the form
+#
+#     def __init__(self, *args, **kwargs):
+#         super(MemberForm, self).__init__(*args, **kwargs)
+#         self.fields['name'].widget.attrs.update({'class' : 'form-control'})

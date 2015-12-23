@@ -250,7 +250,7 @@ document.getElementById("vi").href = "/.."+"/view/"+"?username="+b
             var string = '';
             string += '<select multiple="multiple" id="my-select" name="my-select[]">';
             for(var i=0;i<source.length;i++){
-                string+= ('<option value= "'+String(i+1)+'" >'+String(source[i])+" "+String(i+1)+'</option>');
+                string+= ('<option value= "'+String(source2[i])+'" >'+String(source[i])+" "+String(source2[i])+'</option>');
             }
             string +='</select>';
             $('#demo2').html(string);
