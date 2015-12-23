@@ -1,0 +1,77 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Upload</h1>
+                    <h2>upload your page</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>AddPrice</h4>
+                    </div>
+                    <div class="upload">
+                        <form action="" method= "post">
+                            <div class="form">
+                                <label> 奖项名称 </label>
+                                <div class="input-div">
+                                		    {% if status == True %}
+																		        添加成功!
+																		    {%  elif status == -1 %}
+																		        添加失败，奖项重复！
+																		    {% endif %}
+                                    <input id="id_auther" name="prize_name" type="text" />
+                                </div>
+                            </div>
+                            <div class="form">
+                                <label> 获奖时间 </label>
+                                <div class="input-div">
+                                    <input id="id_jounery" name="prize_date" type="date" />
+                                </div>
+                            </div>
+                            <div class="form">
+                                <label> 奖项级别 </label>
+                                <div class="radio-div">
+                                <ul>
+            										{% for level in level_list %}
+            										<li><input name="level" type="radio" value="{{ level }}" />{{ level }}</li>
+       													{% endfor %}
+        												<li><input type="text" name="level_other"></li>
+        												</ul>
+        												</div>
+                            </div>
+                            <div class="form">
+                                <label> 奖项等级 </label>
+                                <div class="radio-div">
+                                <ul>
+                                {% for prize in prize_list %}
+           											<li><input name="prize" type="radio" value="{{ prize }}" />{{ prize }}</li>
+        												{% endfor %}
+        												<li><input type="text" name="prize_other"></li>
+        												</ul>
+        											  </div>
+                            </div>
+                            <div class="form">
+                                <input class="submit-input" type="submit" value="Upload" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

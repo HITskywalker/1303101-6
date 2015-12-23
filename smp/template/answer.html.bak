@@ -1,0 +1,167 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>View</h1>
+                    <h2>view all answer</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>专著：</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-title">Title</th>
+                                    <th class="th-author">Primary Author</th>
+                                    <th class="th-date">PublishDate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if not zz %}
+                                <p>Empty</p>
+                                {% else %}
+                                {% for paper in zz %}
+															<tr>
+																<td>{{ paper.name }}</td>
+																<td>{{ paper.institution}}</td>
+																<td>{{ paper.gaintime|date:"Y-m-d" }}</td>
+																<td>{{ paper.firstclass.name}}{{ paper.secondclass.name}}{{ paper.thirdclass.name}}{{ paper.fourthclass.name}}{{ paper.fifthclass.name}}</td>
+																<td><a href="/delezhuanzhu/?zid={{paper.id}}">删除</a></td>
+																<td><a href="/addzzau/?zid={{paper.id}}">添加作者</a></td>
+																	<td><a href="/changezz/?zid={{paper.id}}">更新</a></td>
+															 </tr>
+															 {%endfor%}
+															 {% endif %}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                    <div class="table-title">
+                        <h3>专利：</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-title">Title</th>
+                                    <th class="th-author">Cate</th>
+                                    <th class="th-date">number</th>
+                                    <th class="th-date">institution</th>
+                                    <th class="th-date">gaintime</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% if not zl %}
+                                </tbody>
+                                </table>
+                                <p>Empty</p>
+                                {% else %}
+                                {% for paper in zl %}
+															<tr>
+																<td>{{ paper.name }}</td>
+																<td>{{ paper.cate}}</td>
+																<td>{{ paper.number}}</td>
+																<td>{{ paper.institution}}</td>
+																<td>{{ paper.gaintime|date:"Y-m-d" }}</td>
+																<td><a href="/delezhuanli/?zid={{paper.id}}">删除</a></td>
+																	<td><a href="/changezl/?zid={{paper.id}}">更新</a></td>
+															 </tr>
+															 {%endfor%}
+															 {% endif %}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                    <div class="table-title">
+                        <h3>获奖：</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-title">name</th>
+                                    <th class="th-author">level</th>
+                                    <th class="th-author">rank</th>
+                                    <th class="th-date">gaintime</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% if not all %}
+                                <p>Empty</p>
+                                {% else %}
+                                {% for prize in all %}
+															<tr>
+																<td>{{ prize.name}}</td>
+																<td>{{ prize.level}}</td>
+																<td>{{ prize.rank}}</td>
+																<td>{{prize.gaintime|date:"Y-m-d"}}}</td>
+																<td>
+																	{{ prize.firstclass.name}}{{ prize.secondclass.name}}{{ prize.thirdclass.name}}{{ prize.fourthclass.name}}{{ prize.fifthclass.name}}
+																</td>
+																<td><a href="/deleteprize/?id={{prize.id}}">删除</a></td>
+																	<td><a href="/changeprize/?id={{prize.id}}">更新</a></td>
+															 </tr>
+															 {%endfor%}
+															 {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-title">
+                        <h3>论文：</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-title">Title</th>
+                                    <th class="th-author">Primary Author</th>
+                                    <th class="th-date">PublishDate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if not pp %}
+                                </tbody>
+                                </table>
+                                <p>Empty</p>
+                                {% else %}
+                                {% for paper in pp %}
+															<tr>
+																<td><a href="/../detail/?id={{paper.id}}">{{ paper.pdfname }}</a></td>
+																{%for au in paper.auther.all%}
+																{%if paper.MauthorID == au.id%}
+																<td>{{ au.name}}</td>
+																{%endif%}
+																{%endfor%}
+																<td>{{ paper.timestamp|date:"Y-m-d H:i:s" }}</td>
+																<td><a href="/delete/?id={{paper.id}}">删除</a></td>
+																<td><a href="/addauthor/?id={{paper.id}}">添加作者</a></td>
+																	<td><a href="/change/?id={{paper.id}}">更新</a></td>
+															 </tr>
+															 {%endfor%}
+															 {% endif %}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+{% endblock %}

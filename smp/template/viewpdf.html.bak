@@ -1,0 +1,33 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>View pdf</h1>
+                    <h2>view {{paper.pdfname}}</h2>
+                </div>
+            </div>
+            <div id="formbackground" style="height:600px; z-index:-1;">
+                <embed class="pdf" src={{paper.pdfname}} width="80%" height="100%" type="application/pdf"></embed>
+            </div>
+            <script type="text/javascript">
+            $(function(){
+                $('#formbackground').height($(window).height());
+                $('#formbackground').width($(window).width());
+            });
+            </script>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

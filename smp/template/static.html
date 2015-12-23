@@ -1,0 +1,176 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Static</h1>
+                    <h2>static for now</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content" style="float: center;">
+                    <div class="table-title">
+                        <h3>专著：共有{{sum1}}个记录</h3>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                    
+                        {% for k,v in ans.items %}
+                    	{% if k == 'first'%}
+                    	<td>第一作者 ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'second'%}
+                    	<td>第二作者 ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'third'%}
+                    	<td>第三作者 ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fourth'%}
+                    	<td>第四作者 ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fifth'%}
+                    	<td>第五作者 ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                        </table>
+                    </div>
+                    <div class="table-title">
+                        <h3> 专利：共有{{sum2}}个记录</h3>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                     
+                    	{% for k,v in ans1.items %}
+                    	{% if k == 'first'%}
+                    	
+                    	<td>一等专利 ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'second'%}
+                    	<td>二等专利 ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'third'%}
+                    	<td>三等专利 ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fourth'%}
+                    	<td>四等专利 ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fifth'%}
+                    	<td>五等专利 ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                        </table>
+                    </div>
+                    <div class="table-title">
+                        <h3>获奖：共有{{sum3}}个记录</h3>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                    	{% for k,v in ans2.items %}
+                    	{% if k == 'first'%}
+                    	
+                    	<td>一等奖  ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'second'%}
+                    	<td>二等奖  ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'third'%}
+                    	<td>三等奖  ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fourth'%}
+                    	<td>四等奖  ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fifth'%}
+                    	<td>五等奖  ：  {{v}}个</td>
+                    	{%endif %}
+                    	{% endfor%}
+                        </table>
+                    </div>
+                    <div class="table-title">
+                        <h3>合作：共有{{sum4}}个记录</h3>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                    	{% for k,v in ans3.items %}
+                    	{% if k == 'first'%}
+                    	
+                    	<td>邀请国（境）外学者来访：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'second'%}
+                    	<td>主办或承办国际会议  ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'third'%}
+                    	<td>主办或承办国内会议  ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fourth'%}
+                    	<td>国际会议上的大会特邀报告 ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'fifth'%}
+                    	<td>国际期刊物编委  ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                    	{% for k,v in ans.items %}
+                    	{% if k == 'sixth'%}
+                    	<td>建立国际联合实验室  ：  {{v}}次</td>
+                    	{%endif %}
+                    	{% endfor%}
+                        </table>
+                    </div>
+                    <div class="table-title">
+                        <h3>总评：</h3>
+                    </div>
+                    <div class="table-box">
+                    	<table>
+                        <tr><td>获奖贡献分数：{{point2}}</td></tr>
+                        <tr><td>专利贡献分数：{{point1}}</td></tr>
+                        <tr><td>专著贡献分数：{{point}}</td></tr>
+                        <tr><td>总分：{{points}}</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+
+{% endblock %}

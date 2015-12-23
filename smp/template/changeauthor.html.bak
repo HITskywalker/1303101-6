@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Upload</h1>
+                    <h2>upload your page</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>AddAuthor</h4>
+                    </div>
+                    <div class="upload">
+                        <form action="" method= "post" enctype="multipart/form-data">
+                            <div class="form">
+                                <label>Author</label>
+                                <div class="input-div">
+                                    <input id="id_auther" name="auther" type="text" value={{au.name}}>
+                                </div>
+                            </div>
+                            <div class="form">
+                                <label>Institution</label>
+                                <div class="input-div">
+                                    <input id="id_institution" name="institution" type="text" value={{au.institution}}>
+                                </div>
+                            </div>
+                            
+                            <div class="form">
+                                <input class="submit-input" type="submit" value="Upload" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

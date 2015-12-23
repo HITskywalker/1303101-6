@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>update patent</title>
+<link href="../../../static/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+  <ul id="nav">
+    <li><a href="index.html">科研成果管理系统</a></li>
+    <li id="sign"><a href="/login/">登陆</a></li>
+  </ul>
+</div>
+<div id="page">
+    <div id="sidebar">
+        <ul class="main">
+            <li class="main">
+                <a class="main" href="javascript:;">Pages</a>
+                <ul class="sub">
+                    <li><a id="vi"href="/../view">view</a></li>
+                    <li><a href="/../upload">upload</a></li>
+                    <li><a href="/../search">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="project.html">Projects</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="award.html">Awards</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="patent.html">Patents</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Update</h1>
+                    <h2>update your patent</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>UpdatePatent</h4>
+                    </div>
+                    <div>
+                        <form method="post">
+                        {% csrf_token %}
+                            <table>
+                                <tr class="tr">
+                                    <td class="td-left">Title</td>
+                                    <td class="td-right"><input name="title" type="text" value={{patent.Title}}></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Patentee</td>
+                                    <td class="td-right"><input name="patentee_name" type="text" value={{patent.Patentee.Name}}></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Patent_num</td>
+                                    <td class="td-right"><input name="patent_num" type="text" value={{patent.Patent_num}}></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Granting_units</td>
+                                    <td class="td-right"><input name="granting_units" type="text" value={{patent.Granting_units}} ></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Granting_date</td>
+                                    <td class="td-right"><input name="granting_date" type="date" value={{ patent.Granting_date|date:"Y-m-d" }}></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Member</td>
+                                    <td class="td-right">
+                                        <select id="select" name="num">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        <script>document.getElementById("select")[{{num}}-1].selected=true;</script>
+                                        <button type="button" onclick="myfun()">点击这里</button>
+                                        <div id="demo">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <input class="submit-input-2" type="submit" value="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+
+<script>
+string = ""
+ m = {{member|safe}}
+ n = {{num|safe}}
+ a = document.getElementById("demo");
+for(var i=0; i<n; i++){
+    string += ("<input type='text' name='member_name" + String(i) + "' value='" + m[i] + "'><br>");
+}
+a.innerHTML = string;
+function myfun()
+{
+    var obj = document.getElementById("select");
+    var index = obj.selectedIndex;
+    var text = obj.options[index].text;
+    x=document.getElementById("demo");
+    var string = "";
+    for(var i=0; i<Number(text); i++){
+        string += ("<input type='text' name='member_name" + String(i) + "'><br>");
+    }
+    x.innerHTML = string;
+}
+</script>
+
+</body>
+</html>

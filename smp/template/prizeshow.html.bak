@@ -1,0 +1,57 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>View</h1>
+                    <h2>view all Paper</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>All pages</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-title">name</th>
+                                    <th class="th-author">level</th>
+                                    <th class="th-author">rank</th>
+                                    <th class="th-date">gaintime</th>
+                                    <th class="th-title">winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for prize in all %}
+															<tr>
+																<td>{{ prize.name}}</td>
+																<td>{{ prize.level}}</td>
+																<td>{{ prize.rank}}</td>
+																<td>{{prize.gaintime|date:"Y-m-d"}}</td>
+																{% load mysome%}
+																<td><textarea name="yxzc" id="textarea" datatype="LimitB" min="0" max="150" msg="必须在150个汉字之内" style="width:98%" rows="1" readonly>{{names|key:forloop.counter0}}</textarea></td>
+																<td><a href="/deleteprize/?id={{prize.id}}">删除</a></td>
+																	<td><a href="/changeprize/?id={{prize.id}}">更新</a></td>
+															 </tr>
+															 {%endfor%}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+{% endblock %}
