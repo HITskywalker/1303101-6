@@ -32,7 +32,7 @@ class userform(forms.Form):
 
 
 def ok():
-    return HttpResponseRedirect("/login/")
+    return HttpResponse('ok.html')
 
 
 def notvalid():
@@ -74,7 +74,7 @@ def getDoc(request):
             p.auther.add(a)
             p.save()
 
-            return ok()
+            return HttpResponseRedirect('/view/')
         else:
             print pf
             return notvalid()
@@ -121,7 +121,7 @@ def register(req):
             addprauthor(req)
             addzzauthor(req)
             addzlauthor(req)
-            return ok()
+            return HttpResponseRedirect("/login/")
         else:
             return notvalid()
     else:
@@ -539,6 +539,7 @@ def Price(request):
             z.mpr.add(mp)
             z.save()
             status = True
+            return HttpResponseRedirect("/viewprize/")
     content = {'level_list': level_list, 'prize_list': prize_list, 'status': status}
     return render(request, 'addprice.html', content)
 
@@ -781,7 +782,7 @@ def addzl(req):
 			z.save()
 			addauthor(member_names,z.id)
 			z.save()
-			return ok()
+			return HttpResponseRedirect('/viewzl/')
 		return notvalid()
 
 
@@ -928,7 +929,7 @@ def addzz(req):
 			z.save()
 			addauthorzz(member_names,z.id)
 			z.save()
-			return ok()
+			return HttpResponseRedirect('/viewzz/')
 		return notvalid()
 
 def viewzhuanzhu(req):

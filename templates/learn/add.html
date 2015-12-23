@@ -5,7 +5,7 @@
 {% block content %}
 <style type="text/css">
     .row_2{
-        width: 35%;
+        width: 40%;
     }
 </style>
     <div id="main-content">
@@ -26,23 +26,23 @@
                         {% csrf_token %}
                             <table>
                                 <tr class="tr">
-                                    <td class="td-left">Institution</td>
+                                    <td class="td-left">进修学习单位</td>
                                     <td class="td-right"><input name="Institution" type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Content</td>
+                                    <td class="td-left">进修学习内容</td>
                                     <td class="td-right"><input name="Content" type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Start_date</td>
+                                    <td class="td-left">开始时间</td>
                                     <td class="td-right"><input name="Start_date" type="date"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">End_date</td>
+                                    <td class="td-left">结束时间</td>
                                     <td class="td-right"><input name="End_date" type="date"></td>
                                 </tr>
                             </table>
-                            <input class="submit-input-2" type="submit" value="submit">
+                            <input class="submit-input-2" type="submit" value="提交">
                         </form>
                     </div>
                 </div>

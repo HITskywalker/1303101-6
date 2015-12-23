@@ -15,43 +15,43 @@
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>Upload</h1>
-                    <h2>upload your patent</h2>
+                    <h1>上传</h1>
+                    <h2>上传你的专利</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>Upload</h4>
+                        <h3>上传</h4>
                     </div>
                     <div class="upload">
                         <form action="" method= "post" enctype="multipart/form-data">
                             <div class="form">
-                                <label>Name:</label>
+                                <label>专利名称:</label>
                                 <div class="input-div">
                                     <input id="id_name" maxlength="100" name="name" type="text" value={{paper.name}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Number:</label>
+                                <label>专利编号:</label>
                                 <div class="input-div">
                                     <input id="id_number" name="number" type="number" value={{paper.number}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Institution:</label>
+                                <label>授予单位:</label>
                                 <div class="input-div">
                                     <input id="id_institution" maxlength="30" name="institution" type="text" value={{paper.institution}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Cate:</label>
+                                <label>专利分类:</label>
                                 <div class="input-div">
                                     <input id="id_cate" name="cate" type="number" value={{paper.cate}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Gaintime:</label>
+                                <label>授予时间:</label>
                                 <div class="input-div">
                                     <input id="id_gaintime" name="gaintime" type="date" value= {{paper.gaintime|date:"Y-m-d"}}>
                                 </div>
@@ -60,7 +60,7 @@
                                 <input class="submit-input" type="submit" value="Upload" />
                             </div>
                             <div class="modal-body" id = "demo3">
-                                </div>
+                            </div>
                         </form>
                         <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">选择人员</button>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -108,7 +108,6 @@
         });
         function show()
         {
-        		alert("success!!");
             res = [];
             show2();
         }

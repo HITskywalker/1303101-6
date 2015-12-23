@@ -11,71 +11,71 @@
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>Add</h1>
-                    <h2>add a global cooperation record</h2>
+                    <h1>添加</h1>
+                    <h2>添加一条国际合作记录</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>AddRecord</h3>
+                        <h3>添加</h4>
                     </div>
                     <div>
                         <form method="post">
                         {% csrf_token %}
                             <table>
                                 <tr class="tr">
-                                    <td class="td-left">Catagory</td>
+                                    <td class="td-left">类别</td>
                                     <td class="td-right">
                                         <ul>
-                                            <li><input name="catagory" type="radio" value="1">in</li>
-                                            <li style="margin-left: 50px"><input name="catagory" type="radio" value="0">out</li>
+                                            <li><input name="catagory" type="radio" value="1">来访</li>
+                                            <li style="margin-left: 50px"><input name="catagory" type="radio" value="0">出访</li>
                                         </ul>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Start_date</td>
+                                    <td class="td-left">开始时间</td>
                                     <td class="td-right"><input name="start_date" type="date"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">End_date</td>
+                                    <td class="td-left">结束时间</td>
                                     <td class="td-right"><input name="end_date" type="date"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Place</td>
+                                    <td class="td-left">地点</td>
                                     <td class="td-right"><input name="place" type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Purpose</td>
+                                    <td class="td-left">访问目的</td>
                                     <td class="td-right"><input name="purpose" type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Report_name</td>
+                                    <td class="td-left">报告名称</td>
                                     <td class="td-right"><input name="report_name" type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Report_url</td>
+                                    <td class="td-left">新闻报道链接</td>
                                     <td class="td-right"><input name="report_url" type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Save_report</td>
+                                    <td class="td-left">新闻报道保存否</td>
                                     <td class="td-right">
                                         <ul>
-                                            <li><input name="save_report" type="radio" value="1">yes</li>
-                                            <li style="margin-left: 50px"><input name="save_report" type="radio" value="0">no</li>
+                                            <li><input name="save_report" type="radio" value="1">保存</li>
+                                            <li style="margin-left: 50px"><input name="save_report" type="radio" value="0">未保存</li>
                                         </ul>
                                     </td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Save_photo</td>
+                                    <td class="td-left">照片保存否</td>
                                     <td class="td-right">
                                         <ul>
-                                            <li><input name="save_photo" type="radio" value="1">yes</li>
-                                            <li style="margin-left: 50px"><input name="save_photo" type="radio" value="0">no</li>
+                                            <li><input name="save_photo" type="radio" value="1">保存</li>
+                                            <li style="margin-left: 50px"><input name="save_photo" type="radio" value="0">未保存</li>
                                         </ul>
                                     </td>
                                 </tr>
                                  <tr class="tr">
-                                    <td class="td-left">Member</td>
+                                    <td class="td-left">成员列表</td>
                                     <td class="td-right">
                                         <select id="select" name="p_num">
                                             <option>1</option>
@@ -84,15 +84,14 @@
                                             <option>4</option>
                                             <option>5</option>
                                         </select>
-                                        <button type="button" onclick="myfun()">点击这里</button>
+                                        <button type="button" onclick="myfun()">确认人员数量</button>
                                         <div id="demo">
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                            <input class="submit-input-2" type="submit" value="submit">
+                            <input class="submit-input-2" type="submit" value="提交">
                         </form>
-
                     </div>
                 </div>
             </div>
@@ -103,7 +102,9 @@
         <div class="new-pages"></div>
         <div class="new-projects"></div>
     </div>
-    <script>
+</div>
+
+<script>
 function myfun()
 {
     var obj = document.getElementById("select");

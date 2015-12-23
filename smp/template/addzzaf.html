@@ -8,36 +8,35 @@
         width: 45%;
     }
 </style>
-</style>
     <div id="main-content">
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>Upload</h1>
-                    <h2>upload your writing</h2>
+                    <h1>上传</h1>
+                    <h2>上传你的软件著作</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>Upload</h4>
+                        <h3>上传</h4>
                     </div>
                     <div class="upload">
                         <form action="" method= "post" enctype="multipart/form-data">
                             <div class="form">
-                                <label>Name:</label>
+                                <label>名称:</label>
                                 <div class="input-div">
                                     <input id="id_name" maxlength="100" name="name" type="text" value={{paper.name}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Institution:</label>
+                                <label>授予单位:</label>
                                 <div class="input-div">
                                     <input id="id_institution" maxlength="30" name="institution" type="text" value={{paper.institution}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Gaintime:</label>
+                                <label>授予时间:</label>
                                 <div class="input-div">
                                     <input id="id_gaintime" name="gaintime" type="date"value={{paper.gaintime|date:"Y-m-d"}}>
                                 </div>
@@ -94,7 +93,6 @@
         });
         function show()
         {
-        		alert("success!!");
             res = [];
             show2();
         }
@@ -103,7 +101,7 @@
             var string = '';
             string += '<select multiple="multiple" id="my-select" name="my-select[]">';
             for(var i=0;i<source.length;i++){
-                string+= ('<option value= "'+String(i+1)+'" >'+String(source[i])+" "+String(i+1)+'</option>');
+                string+= ('<option value= "'+String(source2[i])+'" >'+String(source[i])+" "+String(source2[i])+'</option>');
             }
             string +='</select>';
             $('#demo2').html(string);

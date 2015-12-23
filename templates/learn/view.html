@@ -5,31 +5,32 @@
 {% block content %}
 <style type="text/css">
     .row_2{
-        width: 60%;
+        width: 67%;
     }
 </style>
     <div id="main-content">
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>View</h1>
-                    <h2>view all learn records</h2>
+                    <h1>浏览</h1>
+                    <h2>浏览所有进修记录</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>All records</h4>
+                        <h3>所有记录</h3>
                     </div>
                     <div class="table-box">
                         <table>
                             <thead>
-                                <tr>
-                                    <th class="th-author">Institution</th>
-                                    <th class="th-author">Content</th>
-                                    <th class="th-date">Start_date</th>
-                                    <th class="th-date">End_date</th>
-                                    <th class="th-date">Member</th>
+                                <tr class="title">
+                                    <th class="th-author">进修学习单位</th>
+                                    <th class="th-author">进修学习内容</th>
+                                    <th class="th-date">开始时间</th>
+                                    <th class="th-date">结束时间</th>
+                                    <th class="th-date">人员姓名</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,14 +46,23 @@
                                     <td>{{ record.Start_date|date:"Y-m-d" }}</td>
                                     <td>{{ record.End_date|date:"Y-m-d" }}</td>
                                     <td>{{ record.User.username}}</td>
-                                    <td><a href="/learn/delete/?id={{record.id}}">删除</a></td>
-                                    <td><a href="/learn/update/?id={{record.id}}">更新</a></td>
+                                    <td><a href="#" onclick="myFunction()">删除</a>
+                                    <a href="/learn/update/?id={{record.id}}">更新</a></td>
+                                    <script>
+                                    function myFunction()
+                                    {
+                                        if(confirm("删除是不可恢复的，你确认要删除吗？")){
+                                            window.location.href = "/learn/delete/?id={{record.id}}";
+                                        }
+                                    }
+                                    </script>
                                  </tr>
                                  {%endfor%}
                                  {% endif %}
                             </tbody>
                             
                         </table>
+                    <div class="none"></div>
                     </div>
                 </div>
             </div>

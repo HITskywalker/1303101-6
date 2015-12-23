@@ -5,41 +5,38 @@
 {% block content %}
 <style type="text/css">
     .row_2{
-        width: 90%;
+        width: 93%;
     }
 </style>
 <div id="main-content">
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>View</h1>
-                    <h2>view all global cooperation</h2>
+                    <h1>浏览</h1>
+                    <h2>浏览所有国际合作情况</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>All records</h3>
-                        <div class="search">
-                            <input type="text">
-                            <button class="search-button">s</button>
-                        </div>
+                        <h3>所有记录</h3>
                     </div>
                     <div class="table-box">
                         <table>
                             <thead>
                                 <tr class="title">
-                                    <th class="th-date">Catagory</th>
-                                    <th class="th-date">Member</th>
-                                    <th class="th-date">Number</th>
-                                    <th class="th-date">Start_date</th>
-                                    <th class="th-date">End_date</th>
-                                    <th class="th-date">Place</th>
-                                    <th class="th-date">Purpose</th>
-                                    <th class="th-date">Report_name</th>
-                                    <th class="th-date">Report_url</th>
-                                    <th class="th-date">Save_report</th>
-                                    <th class="th-date">Save_photo</th>
+                                    <th class="th-date">类别</th>
+                                    <th class="th-date">成员</th>
+                                    <th class="th-date">成员数量</th>
+                                    <th class="th-date">开始时间</th>
+                                    <th class="th-date">结束时间</th>
+                                    <th class="th-date">出访地点</th>
+                                    <th class="th-date">出访目的</th>
+                                    <th class="th-date">新闻报道名称</th>
+                                    <th class="th-date">新闻报道链接</th>
+                                    <th class="th-date">新闻报道保存否</th>
+                                    <th class="th-date">照片保存否</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,9 +48,9 @@
                                 {% for cop in cop_list %}
                                 <tr>
                                     {% if cop.catagory %}
-                                    <td>in</td>
+                                    <td>来访</td>
                                     {% else %}
-                                    <td>out</td>
+                                    <td>出访</td>
                                     {% endif %}
                                     <td>
                                     {% for people in cop.member.all %}
@@ -68,17 +65,25 @@
                                     <td>{{ cop.report_name}}</td>
                                     <td>{{ cop.report_url}}</td>
                                     {% if cop.save_report %}
-                                    <td>yes</td>
+                                    <td>是</td>
                                     {% else %}
-                                    <td>no</td>
+                                    <td>否</td>
                                     {% endif %}
                                     {% if cop.save_url %}
-                                    <td>yes</td>
+                                    <td>是</td>
                                     {% else %}
-                                    <td>no</td>
+                                    <td>否</td>
                                     {% endif %}
-                                    <td><a href="/cop/delete/?id={{cop.id}}">删除</a></td>
-                                    <td><a href="/cop/update/?id={{cop.id}}">更新</a></td>
+                                    <td><a href="#" onclick="myFunction()">删除</a>
+                                        <a href="/cop/update/{{cop.id}}">更新</a></td>
+                                    <script>
+                                    function myFunction()
+                                    {
+                                        if(confirm("删除是不可恢复的，你确认要删除吗？")){
+                                            window.location.href = "/cop/delete/?id={{cop.id}}";
+                                        }
+                                    }
+                                    </script>
                                  </tr>
                                  {%endfor%}
                             </tbody>

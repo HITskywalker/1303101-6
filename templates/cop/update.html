@@ -3,12 +3,17 @@
 {% block title %}update{% endblock %}
 
 {% block content %}
+<style type="text/css">
+    .row_2{
+        width: 40%;
+    }
+</style>
     <div id="main-content">
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>Update</h1>
-                    <h2>Update global cooperation record</h2>
+                    <h1>更新</h1>
+                    <h2>更新国际合作记录</h2>
                 </div>
             </div>          
             <div class="row_2">
@@ -21,11 +26,11 @@
                         {% csrf_token %}
                             <table>
                                 <tr class="tr">
-                                    <td class="td-left">Catagory</td>
+                                    <td class="td-left">类别</td>
                                     <td class="td-right">
                                         <ul>
-                                            <li><input id="cata1" name="catagory" type="radio" value="1">in</li>
-                                            <li style="margin-left: 50px"><input  id="cata0" name="catagory" type="radio" value="0">out</li>
+                                            <li><input id="cata1" name="catagory" type="radio" value="1">来访</li>
+                                            <li style="margin-left: 50px"><input  id="cata0" name="catagory" type="radio" value="0">出访</li>
                                         </ul>
                                         {% if cop.catagory %}
                                         <script>var cata = true;</script>
@@ -35,39 +40,35 @@
                                     </td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Number</td>
-                                    <td class="td-right"><input name="p_num" value={{cop.p_num}} type="text"></td>
-                                </tr>
-                                <tr class="tr">
-                                    <td class="td-left">Start_date</td>
+                                    <td class="td-left">开始时间</td>
                                     <td class="td-right"><input name="start_date" value={{cop.start_date|date:"Y-m-d"}} type="date"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">End_date</td>
+                                    <td class="td-left">结束时间</td>
                                     <td class="td-right"><input name="end_date" value={{cop.end_date|date:"Y-m-d"}} type="date"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Place</td>
+                                    <td class="td-left">地点</td>
                                     <td class="td-right"><input name="place" value={{cop.place}} type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Purpose</td>
+                                    <td class="td-left">访问目的</td>
                                     <td class="td-right"><input name="purpose" value={{cop.purpose}} type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Report_name</td>
+                                    <td class="td-left">新闻报道名称</td>
                                     <td class="td-right"><input name="report_name" value={{cop.report_name}} type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Report_url</td>
+                                    <td class="td-left">新闻报道链接</td>
                                     <td class="td-right"><input name="report_url" value={{cop.report_url}} type="text"></td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Save_report</td>
+                                    <td class="td-left">新闻报道保存否</td>
                                     <td class="td-right">
                                         <ul>
-                                            <li><input id="report1" name="save_report" type="radio" value="1">yes</li>
-                                            <li style="margin-left: 50px"><input id="report0" name="save_report" type="radio" value="0">no</li>
+                                            <li><input id="report1" name="save_report" type="radio" value="1">是</li>
+                                            <li style="margin-left: 50px"><input id="report0" name="save_report" type="radio" value="0">否</li>
                                         </ul>
                                         {% if cop.save_report %}
                                         <script>var report = true;</script>
@@ -77,11 +78,11 @@
                                     </td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Save_photo</td>
+                                    <td class="td-left">照片保存否</td>
                                     <td class="td-right">
                                         <ul>
-                                            <li><input id="photo1" name="save_photo" type="radio" value="1">yes</li>
-                                            <li style="margin-left: 50px"><input id="photo0" name="save_photo" type="radio" value="0">no</li>
+                                            <li><input id="photo1" name="save_photo" type="radio" value="1">是</li>
+                                            <li style="margin-left: 50px"><input id="photo0" name="save_photo" type="radio" value="0">否</li>
                                         </ul>
                                         {% if cop.catagory %}
                                         <script>var photo = true;</script>
@@ -91,7 +92,7 @@
                                     </td>
                                 </tr>
                                 <tr class="tr">
-                                    <td class="td-left">Member</td>
+                                    <td class="td-left">成员列表</td>
                                     <td class="td-right">
                                         <select id="select" name="p_num">
                                             <option>1</option>
@@ -101,13 +102,13 @@
                                             <option>5</option>
                                         </select>
                                         <script>document.getElementById("select")[{{cop.p_num}}-1].selected=true;</script>
-                                        <button type="button" onclick="myfun()">点击这里</button>
+                                        <button type="button" onclick="myfun()">确认人员数量</button>
                                         <div id="demo">
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                            <input class="submit-input-2" type="submit" value="submit">
+                            <input class="submit-input-2" type="submit" value="提交">
                         </form>
                     </div>
                 </div>

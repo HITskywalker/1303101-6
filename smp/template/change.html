@@ -3,41 +3,46 @@
 {% block title %}add{% endblock %}
 
 {% block content %}
+<style type="text/css">
+    .row_2{
+        width: 45%;
+    }
+</style>
     <div id="main-content">
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>Upload</h1>
-                    <h2>upload your page</h2>
+                    <h1>更新</h1>
+                    <h2>更新你的论文</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>Upload</h4>
+                        <h3>更新</h4>
                     </div>
                     <div class="upload">
                         <form action="" method= "post" enctype="multipart/form-data">
                             <div class="form">
-                                <label>Author</label>
+                                <label>作者</label>
                                 <div class="input-div">
                                     <input id="id_auther" name="auther" type="text" value={{au.name}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Journal</label>
+                                <label>期刊</label>
                                 <div class="input-div">
                                     <input id="id_jounery" name="jounery" type="text" value={{paper.jounery.J_name}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Institution</label>
+                                <label>单位</label>
                                 <div class="input-div">
                                     <input id="id_institution" name="institution" type="text"value={{au.institution}}>
                                 </div>
                             </div>
                             <div class="form">
-                                <label>Page</label>
+                                <label>论文</label>
                                 <div class="input-div">
                                     <input id="id_pdf" name="pdf" type="file">
                                 </div>
