@@ -1,0 +1,54 @@
+{% extends "base/base.html" %}
+
+{% block title %}update{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Update</h1>
+                    <h2>Update your learn record</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>Update</h4>
+                    </div>
+                    <div>
+                        <form method="post">
+                        {% csrf_token %}
+                            <table>
+                                <tr class="tr">
+                                    <td class="td-left">Institution</td>
+                                    <td class="td-right"><input name="Institution" value={{record.Institution}} type="text"></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Content</td>
+                                    <td class="td-right"><input name="Content" value={{record.Content}} type="text"></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Start_date</td>
+                                    <td class="td-right"><input name="Start_date" value={{record.Start_date|date:"Y-m-d"}} type="date"></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">End_date</td>
+                                    <td class="td-right"><input name="End_date" value={{record.End_date|date:"Y-m-d"}} type="date"></td>
+                                </tr>
+                            </table>
+                            <input class="submit-input-2" type="submit" value="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+
+{% endblock %}

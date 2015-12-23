@@ -1,0 +1,67 @@
+{% extends "base/base.html" %}
+
+{% block title %}view{% endblock %}
+
+{% block content %}
+<style type="text/css">
+    .row_2{
+        width: 60%;
+    }
+</style>
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>View</h1>
+                    <h2>view all learn records</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>All records</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-author">Institution</th>
+                                    <th class="th-author">Content</th>
+                                    <th class="th-date">Start_date</th>
+                                    <th class="th-date">End_date</th>
+                                    <th class="th-date">Member</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if not record_list %}
+                                </tbody>
+                                </table>
+                                <p>Empty</p>
+                                {% else %}
+                                {% for record in record_list %}
+                                <tr>
+                                    <td>{{ record.Institution }}</td>
+                                    <td>{{ record.Content}}</td>
+                                    <td>{{ record.Start_date|date:"Y-m-d" }}</td>
+                                    <td>{{ record.End_date|date:"Y-m-d" }}</td>
+                                    <td>{{ record.User.username}}</td>
+                                    <td><a href="/learn/delete/?id={{record.id}}">删除</a></td>
+                                    <td><a href="/learn/update/?id={{record.id}}">更新</a></td>
+                                 </tr>
+                                 {%endfor%}
+                                 {% endif %}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+{% endblock %}

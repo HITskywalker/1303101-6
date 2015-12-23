@@ -1,0 +1,49 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>View</h1>
+                    <h2>view all Paper</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>All pages</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-title">name</th>
+                                    <th class="th-author">user_id</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for au in au_list %}
+															<tr>
+																<td>{{ au.name}}</td>
+																<td>{{ au.user.id}}</td>
+																<td><a href="/addzlau2/?auid={{au.id}}">添加</a></td>
+															 </tr>
+															 {%endfor%}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends "base/base2.html" %}
+
+{% block title %} ProjectCheck - Create {% endblock %}
+
+{% block heading %}<h1>  ProjectCheck - Create </h1>  {% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header" style="margin-top: 0px;">
+                    <h1>验收项目</h1>
+                </div>
+            </div>
+            <div class="row_2">
+                <div class="table-content" style="border: 0px;">
+                    <div>
+                        <table>
+                        <form action="" method="POST"> {% csrf_token %}
+                          {{form}}
+                          <tr>
+                            <td colspan="2" align="right"><input type="submit" value="创建" class="btn btn-success"/></td>
+                          </tr>
+                        </form>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+
+{% block title %}OK{% endblock %}
+
+{% block content %}
+	<h1>添加成功！</h1>
+<a href="javascript:history.go(-1)">返回</a>
+	<!-- content goes here -->
+
+	<footer>
+	</footer>
+
+</body>
+
+</html>

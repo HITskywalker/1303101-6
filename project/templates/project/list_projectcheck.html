@@ -1,0 +1,74 @@
+
+{% extends "base/base2.html" %}
+
+{% block title %}  ProjectCheck -- List {% endblock %}
+
+{% block heading %} 
+<h1> ProjectCheck</h1>
+<h2> List Records</h2>
+{% endblock %}
+{% block content %} 
+<div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header" style="margin-top: 0px;">
+                    <h1>项目验收</h1>
+
+                </div>
+            </div>
+            <div class="row_2">
+                <div class="table-content" style="border: 0px;">
+                    <div class="">
+                    <table class="table table-hover" style="width: 800px;">
+                        <caption class="menu">
+                                <ul>
+                                    <li style="float: left"><h1>项目验收列表</h1></li>
+                                    <li style="float: right"><h1><a href="../ccreate/">Add New</a></h1></li>
+                                </ul>
+                            </caption>
+                            <thead>
+                              <tr>
+                                 <th>项目</th>
+                                 <th>编号</th>
+                                  <th>操作</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in list_items.object_list %}
+                                <tr>
+                                <div class="row-fluid">
+                                    <div class="span11">
+                                        <th><h5>{{item.name}}</h5></th>
+                                        <th><h5>{{ item.project_num }}</h5></th>
+                                        <th>
+                                        <p>
+                                        <a class="btn btn-success" href="../cedit/{{ item.id }}"> <span class=" icon-check icon-white" ></span>修改 </a>
+                                        </p>
+                                        </th>
+                                    </div>
+
+                                </div>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <div class="row-fluid">
+                            {% if list_items.has_previous %}
+                            <a href="?page={{ list_items.previous_page_number }}">上一页</a>
+                            {% endif %}
+
+                            <span class="current">
+                            Page {{ list_items.number }} of {{ list_items.paginator.num_pages }}.
+                            </span>
+
+                            {% if list_items.has_next %}
+                            <a href="?page={{ list_items.next_page_number }}">下一页</a>
+                            {% endif %}
+                            </div>
+                        </table>
+                        <div class="none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

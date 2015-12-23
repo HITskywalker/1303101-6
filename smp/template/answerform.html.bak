@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+   <div id="main-content">
+					<div id="container">
+						<div class="row_1">
+							<div class="page-header">
+								<h1>Search</h1>
+								<h2>search pages according to demand</h2>
+							</div>
+						</div>
+						<div class="row_2">
+							<div class="table-content">
+								<div class="table-title">
+									<h3>Search</h4>
+								</div>
+								<div class="upload">
+									<form action="" method= "POST">
+										<div class="form">
+											<label>Information</label>
+											<div class="input-div">
+												<input id="id_text" name="text" type="text" />
+											</div>
+										</div>
+										<div class="form">
+											<input class="submit-input" type="submit" value="Search" />
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+{% endblock %}

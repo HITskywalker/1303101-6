@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Detail</title>
+<link href="css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+  <ul id="nav">
+    <li><a href="index.html">科研成果管理系统</a></li>
+    <li id="sign"><a href="/login/">登陆</a></li>
+  </ul>
+</div>
+<div id="page">
+    <div id="sidebar">
+        <ul class="main">
+            <li class="main">
+                <a class="main" href="javascript:;">Pages</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="project.html">Projects</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="award.html">Awards</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="patent.html">Patents</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Detail</h1>
+                    <h2>all information of the page</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>Detail</h3>
+                        <a href="#"><button>view paper</button></a>  
+                    </div>
+                    <div class="table-detail">
+                        <table id="detail-table">
+                            <tbody>
+                                <tr>
+                                    <th>Title:</th>
+                                    <td>{{page.title}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Author:</th>
+                                    <td>{{author.name}}</td>
+                                    <th>Institution:</th>
+                                    <td>{{institution}}</td>
+                                    <td id="td-button1">
+                                        <a href="#"><button>delete</button></a>
+                                    </td>
+                                    <td id="td-button2">
+                                        <a href="#"><button>update</button></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Journal:</th>
+                                    <td>{{Journal}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td>{{date}}</td>
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+</body>
+</html>

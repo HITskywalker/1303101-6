@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block title %}add{% endblock %}
+
+{% block content %}
+<style type="text/css">
+    .row_2{
+        width: 45%;
+    }
+</style>
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Upload</h1>
+                    <h2>upload your page</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>Upload</h4>
+                    </div>
+                    <div class="upload">
+                        <form action="" method= "post" enctype="multipart/form-data">
+                            <div class="form">
+                                <label>Name:</label>
+                                <div class="input-div">
+                                    <input id="id_name" maxlength="100" name="name" type="text" />
+                                </div>
+                            </div>
+                            <div class="form">
+                                <input class="submit-input" type="submit" value="Upload" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+{% endblock %}

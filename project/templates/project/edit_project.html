@@ -1,0 +1,27 @@
+
+{% extends "base/base2.html" %}
+
+{% block title %} Project - Edit {% endblock %}
+
+{% block heading %} <h1> Project</h1><h2> Edit </h2> {% endblock %}
+{% block content %}
+    <div id="main-content">
+        <div id="container" style="background-color: #F5F6F6;">
+            <div class="row_1">
+                <div class="page-header" style="margin-top: 0px;">
+                    <h1>修改项目</h1>
+                </div>
+            </div>
+            <div class="row_2" >
+                <div class="table-content" style="border: 0px;" >
+                <table>
+                <form action="" method="POST"> {% csrf_token %}
+                  {{form}}
+                  <tr><td><input type="submit" value="Save" class="btn btn-success" /></td><td><input type="reset" value="重置" class="btn btn-danger"/></td><td></td></tr>
+                </form>
+                </table>
+            </div>
+            </div>
+    </div>
+    </div>
+{% endblock %}

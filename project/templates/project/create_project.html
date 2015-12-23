@@ -1,0 +1,386 @@
+<html>
+<meta charset="utf-8">
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <link href="/static/css/base.css" rel="stylesheet" type="text/css" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="/static/js/jquery.multi-select.js"></script>
+</head>
+<body>
+<div>
+  <ul id="nav">
+    <li><a href="index.html">科研成果管理系统</a></li>
+    <li id="sign"><a href="/login/">登陆</a></li>
+  </ul>
+</div>
+<script>
+function getCookie(name)
+{
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+    if(arr=document.cookie.match(reg))
+
+        return unescape(arr[2]);
+    else
+        return null;
+}
+var a = getCookie("is_log")
+var b = getCookie("username")
+if(a == 1){
+    document.getElementById("sign").innerHTML = "<a href="+"/logout/"+">登出</a>"
+document.getElementById("vi").href = "/.."+"/view/"+"?username="+b
+    }
+</script>
+
+<div id="page" style="margin-top: 0px;">
+    <div id="sidebar">
+        <div class="menu">
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Award</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                        <div name="sub"><a href="/viewprize">view</a></div>
+                        <div name="sub"><a href="/addprize">upload</a></div>
+                        <div name="sub"><a href="/searchprize">search</a></div>
+                </div>
+            </div>
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Cooperation</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                        <div name="sub"><a href="/cop/view">view</a></div>
+                        <div name="sub"><a href="/cop/add">upload</a></div>
+                </div>
+            </div>
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Learn record</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                    <div name="sub"><a href="/learn/view">view</a></div>
+                    <div name="sub"><a href="/learn/upload">upload</a></div>
+                    <div name="sub"><a href="/learn/update">update</a></div>
+                </div>
+            </div>
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Paper</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                    <div name="sub"><a href="/view">view</a></div>
+                    <div name="sub"><a href="/upload">upload</a></div>
+                    <div name="sub"><a href="/search">search</a></div>
+                    <div name="sub"><a href="/stat">Statistics</a></div>
+                </div>
+            </div>
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Patent</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                        <div name="sub"><a href="/viewzl">view</a></div>
+                        <div name="sub"><a href="/addzl">upload</a></div>
+                        <div name="sub"><a href="/addzlaf">addauthor</a></div>
+                </div>
+            </div>
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Project</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                        <div name="sub"><a href="/project/plist/">Project List</a></div>
+{#                        <div name="sub"><a href="/project/mlist/">Member List</a></div>#}
+                        <div name="sub"><a href="/project/clist/">Project Checking</a></div>
+                        <div name="sub"><a href="/project/ilist/">Project Identify</a></div>
+                </div>
+            </div>
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Writing</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                        <div name="sub"><a href="/viewzz">view</a></div>
+                        <div name="sub"><a href="/addzz">upload</a></div>
+                        <div name="sub"><a href="/addzzaf">addauthor</a></div>
+                </div>
+            </div>
+            <div class="menuParent">
+                <div class="ListTitlePanel">
+                    <div class="ListTitle">
+                        <li>Manage</li>
+                        <div class="leftbgbt"> </div>
+                    </div>
+                </div>
+                <div class="menuList">
+                        <div name="sub"><a href="#">statistics</a></div>
+                        <div name="sub"><a href="#">search</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header" style="margin-top: 0px;">
+                    <h1>添加</h1>
+                    <h2>添加新项目</h2>
+                </div>
+            </div>
+            <div class="row_2">
+                <div class="table-content" style="border: 0px;">
+                        <form role="form" method="post">
+                        {% csrf_token %}
+                        <table style="margin-left: 20%;">
+                            <tr style="margin-bottom: 10px;">
+                                <td>项目名称</td>
+                                <td><input  name="project_name" type="text" class="form-control" placeholder="" value={{instance.name}} ></td>
+                            </tr>
+                            <tr>
+                                <td>项目合同号</td>
+                                <td><input name="project_num" type="text" class="form-control" placeholder="" value={{instance.project_num}}  ></td>
+                            </tr>
+                            <tr>
+                                <td>项目来源</td>
+                                <td class="form-group">
+                                <select class="form-control" id="id_source" name="source">
+                                    <option value="">---------</option>
+                                    <option value="1.0" selected="selected">国家自然科学基金</option>
+                                    <option value="0.9">国家863计划</option>
+                                    <option value="0.85">国家科技支撑计划</option>
+                                    <option value="0.8">国防科工</option>
+                                    <option value="0.75">省科技攻关</option>
+                                    <option value="0.7">企业横向</option>
+                                </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>负责人</td>
+                                <td><input name="person" type="text" class="form-control" placeholder="" value={{instance.person}} ></td>
+                            </tr>
+                            <tr>
+                                <td>项目资金</td>
+                                <td><input name="bund" type="text" class="form-control" placeholder="" value={{instance.bund}} ></td>
+                            </tr>
+
+                            <tr>
+                                <td>开始时间</td>
+                                <td><input name="start_time" type="date" class="form-control" value={{ instance.start_time|date:"Y-m-d" }} ></td>
+                            </tr>
+                            <tr>
+                                <td>结束时间</td>
+                                <td><input name="end_time" type="date" class="form-control" value={{ instance.end_time|date:"Y-m-d" }} ></td>
+                            </tr>
+                            <tr>
+                                <div class="modal-body" id = "demo3">
+                                </div>
+                            </tr>
+                        </table>
+                        <input type="submit" style="margin-left: 10%; " class="btn btn-success" value="提交表单">
+                    </form>
+                    <button class="btn btn-primary  " style="margin-left: -45%; margin-top: -46px;" data-toggle="modal" data-target="#myModal">选择人员</button>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                       <div class="modal-dialog">
+                          <div class="modal-content">
+                             <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"
+                                   aria-hidden="true">×
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                   选择人员
+                                </h4>
+                             </div>
+                             <div class="modal-body" id = "demo2">
+                             </div>
+                             <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                   data-dismiss="modal">
+                                   提交
+                                </button>
+                             </div>
+                          </div><!-- /.modal-content -->
+                       </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+            </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+        var ans = [];
+        var res = [];
+        var res2 = [];
+        var source = {{ name|safe }};
+        var source2 = {{ age|safe }};
+        $('#keep-order').multiSelect({ keepOrder: true });
+        $('#myModal').on('shown.bs.modal', function () {
+            show();
+        });
+        function show()
+        {
+            res = [];
+            show2();
+        }
+        function show2()
+        {
+            var string = '';
+            string += '<select multiple="multiple" id="my-select" name="my-select[]">';
+            for(var i=0;i<source.length;i++){
+                string+= ('<option value= "'+String(i+1)+'" >'+String(source[i])+" "+String(i+1)+'</option>');
+            }
+            string +='</select>';
+            $('#demo2').html(string);
+            ans = $('#my-select').multiSelect({
+                keepOrder: true,
+                selectableHeader: "<div class='custom-header'>全部人员</div>",
+                selectionHeader: "<div class='custom-header'>已选人员</div>",
+                afterSelect:function(values){
+                    var find=0;
+                    for(var i=0;i<res.length;i++){
+                        if(values == res[i]){
+                            find=1;
+                            break;
+                        }
+                    }
+                    if(find==0){
+                        res.push(values);
+                    }
+                },
+                afterDeselect:function(values){
+                    res.pop();
+                }
+            });
+        }
+        $('#myModal').on('hidden.bs.modal', function () {
+            var ans = res.join(",");
+            alert(ans);
+            x=document.getElementById("demo3");
+            var string ="";
+            string += "<input type='text' name='nameid' value='"+ ans +"' readonly='true' style='width:0px;height:0px'><br>";
+            x.innerHTML = string;
+        });
+    </script>
+        </div>
+</body>
+<script type="text/javascript">
+    var menuParent = $('.menu > .ListTitlePanel > div');//获取menu下的父层的DIV
+    var menuList = $('.menuList');
+    $('.menu > .menuParent > .ListTitlePanel > .ListTitle').each(function(i) {//获取列表的大标题并遍历
+        $(menuList[i]).slideUp(0);
+        $(this).click(function(){
+            if($(menuList[i]).css('display') == 'none'){
+                $(menuList[i]).slideDown(300);
+            }
+            else{
+                $(menuList[i]).slideUp(300);
+            }
+        });
+    });
+</script>
+<script>
+
+    var links = document.getElementsByName("sub");
+    var lilen = [];
+    for (var i=0;i<links.length;i++)
+    {
+        lilen[i] = links[i].getElementsByTagName("a");
+    }
+    var currenturl = document.location.href;
+    console.log(currenturl);
+    var last = 0;
+    for (var i=0;i<links.length;i++)
+    {
+        var linkurl = lilen[i][0].getAttribute("href");
+        console.log(linkurl);
+        console.log(currenturl.indexOf(linkurl));
+        if(currenturl.indexOf(linkurl)!=-1)
+        {
+            last = i;
+            console.log(last);
+            var parent = links[last].parentNode;
+            $(parent).slideDown(0);
+            break;
+        }
+    }
+{#    console.log(parent);#}
+
+$(function(){
+var pk=1;
+$(".title th").click(function(){
+        // 把要排序的内容添加到数组里
+        var tIndex=parseInt($(this).index());
+        var valueArray=new Array();
+        var p=0;
+        for(var i=1; i<$("table tr").length; i++){
+
+                if(tIndex!=0){
+                        valueArray[p]=parseInt($("table tr:eq("+i+") td").eq(tIndex).html());
+                }else{
+                        valueArray[p]=$("table tr:eq("+i+") td").eq(tIndex).html();
+                }
+                p++;
+        }
+        console.log(valueArray);
+        console.log(tIndex);
+        //数据排序
+        if(pk ==1){
+                valueArray.sort(function(a,b){ return a<=b ? -1:1})
+                pk=2
+        }else{
+                valueArray.sort(function(a,b){ return a>=b ? -1:1})
+                pk=1
+        }
+
+        //匹配内容        加入到一个隐藏的排序div里+-
+        var flag = new Array();
+        for(var i=0; i<$("table tr").length; i++){
+            flag[i] = 0;
+        }
+
+        for(var i=0; i<valueArray.length; i++){
+                for(var d=1; d<$("table tr").length; d++){
+                        var valueText= tIndex!=0 ? parseInt($("table tr:eq("+d+") td").eq(tIndex).html()):$("table tr:eq("+d+") td").eq(tIndex).html();
+
+                        if(flag[d] == 0 && valueArray[i]==valueText){
+                                flag[d] = 1;
+                                $("table tr").eq(d).clone().appendTo(".none");
+                                break;
+                        }
+                }
+        }
+        //重新整理html 排序，添加到视图里
+        var titleClone=$("table tr").eq(0).clone(true);
+        $("table").html("").append(titleClone);
+
+        $("table").append($(".none").html())
+
+        $(".none").html("");
+})
+
+})
+</script>
+</html>

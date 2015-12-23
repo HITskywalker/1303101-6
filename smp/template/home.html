@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}欢迎光临首页{% endblock %}
+ 
+{% block content %}
+    {#  ---slide---  #}
+    <div id="main-slide" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#main-slide" data-slide-to="0" class="active"></li>
+        <li data-target="#main-slide" data-slide-to="1"></li>
+        <li data-target="#main-slide" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active"> <img class="img-responsive" src="static/images/slider/bg1.jpg" alt="slider">
+          <div class="slider-content">
+            <div class="col-md-12 text-center">
+              <h2>欢迎来到 <span class="logo">SkyWalker</span></h2>
+              <h3>你的科研成果管理助手</h3>
+              <p><a href="/about" class="slider btn">更多</a> </p>
+            </div>
+          </div>
+        </div>
+        <div class="item"> <img class="img-responsive" src="static/images/slider/bg2.jpg" alt="slider">
+          <div class="slider-content">
+            <div class="col-md-12 text-center">
+              <h2><strong>成果统计</strong></h2>
+              <h3>操作简单，界面清新，查询高效</h3>
+              <p><a href="/show" class="slider btn">更多</a> </p>
+            </div>
+          </div>
+        </div>
+        <div class="item"> <img class="img-responsive" src="static/images/slider/bg3.jpg" alt="slider">
+          <div class="slider-content">
+            <div class="col-md-12 text-center">
+              <h2><strong>工作考核</strong></h2>
+              <h3>年终工作量统计，获奖申报</h3>
+              <p><a href="/show" class="slider btn">更多</a> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#main-slide" data-slide="prev"> <span><i class="fa fa-angle-left"></i></span> </a> <a class="right carousel-control" href="#main-slide" data-slide="next"> <span><i class="fa fa-angle-right"></i></span> </a>
+    </div>
+    {#  ---main function---  #}
+    <div id="inner-page">
+      <div class="top-center">
+        <h2>基本功能</h2>
+        <p class="lead">录入和维护不同种类的科研成果, 提供丰富灵活的查询功能<br>
+          统计年终工作量，个人获奖申报</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="features">
+            <div class="col-md-4 col-sm-6">
+              <div class="feature-wrap"> <i class="fa fa-laptop"></i>
+                <h2>成果录入</h2>
+                <h3>录入和维护不同种类的科研成果，包括科研项目、获奖、专利/著作权、出访等 </h3>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="feature-wrap"> <i class="fa fa-code"></i>
+                <h2>成果查询</h2>
+                <h3>丰富灵活的查询功能，支持多种关键字查询</h3>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="feature-wrap"> <i class="fa fa-rocket"></i>
+                <h2>工作量统计</h2>
+                <h3>用户可以自定义典型模板来统计工作量，支持自动生成excel表格导出. </h3>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="feature-wrap"> <i class="fa fa-picture-o"></i>
+                <h2>功能四</h2>
+                <h3>待定</h3>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="feature-wrap"> <i class="fa fa-bullhorn"></i>
+                <h2>功能五</h2>
+                <h3>待定</h3>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <div class="feature-wrap"> <i class="fa fa-file-text-o"></i>
+                <h2>功能六</h2>
+                <h3>待定</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {#  ---user reviews---  #}
+    <section id="testimonials" class="text-center">
+      <div class="container">
+        <div class="center">
+          <h2>用户评价</h2>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div id="testimonial" class="owl-carousel owl-theme">
+              <div class="item">
+                <p>这个网站真的用着非常方便，操作简单，功能强大，还能用来计算工作量，再也不用担心找不到论文了</p>
+                <p><strong>John Connor</strong>, CEO, Company.</p>
+              </div>
+              <div class="item">
+                <p>这个网站真的用着非常方便，操作简单，功能强大，还能用来计算工作量，再也不用担心找不到论文了</p>
+                <p><strong>Jenny Connor</strong>, CEO, Company.</p>
+              </div>
+              <div class="item">
+                <p>这个网站真的用着非常方便，操作简单，功能强大，还能用来计算工作量，再也不用担心找不到论文了</p>
+                <p><strong>John Connor</strong>, CEO, Company.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {#  ---getting start  #}
+    <section id="get-started">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <h2>很感兴趣？</h2>
+            <p>对这个网站很感兴趣，想要联系我们？</p>
+            <a href="/contact" class="btn btn-primary">Contact us</a></div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

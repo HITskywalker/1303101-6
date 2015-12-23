@@ -1,0 +1,78 @@
+{% extends "base/base2.html" %}
+
+{% block title %}  Project -- List {% endblock %}
+
+{% block css %}
+    .menu ul li{
+        list-style:none;
+    }
+{% endblock %}
+
+{% block content %}
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header" style="margin-top: 0px;">
+                    <h1>所有项目</h1>
+
+                </div>
+            </div>
+            <div class="row_2" style="width: 70%;">
+                <div class="table-content" style="border: 0px;">
+                    <div class="">
+                    <table class="table table-hover" style="width: 800px;">
+                        <caption class="menu" >
+                            <ul>
+                                <li style="float: left"><h1>项目列表</h1></li>
+                                <li style="float: right">
+                                    <h1><a href="../pcreate/">Add New</a></h1>
+                                </li>
+                            </ul>
+                        </caption>
+                        <thead>
+                          <tr>
+                             <th>项目名</th>
+                             <th>项目编号</th>
+                              <th>操作</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in list_items.object_list %}
+                            <tr>
+                            <div class="row-fluid">
+                                <div class="span11">
+                                    <th><h5>{{item.name}}</h5></th>
+                                    <th><h5>{{ item.project_num }}</h5></th>
+                                    <th>
+                                    <p>
+                                    <a class="btn btn-info" href="../pview/{{ item.id }}"><span class=" icon-check icon-white" ></span>详细 </a>
+                                    <a class="btn btn-success" href="../pedit/{{ item.id }}"> <span class=" icon-check icon-white" ></span>修改 </a>
+                                    <a class="btn btn btn-warning" href="../icreate2/{{ item.id }}"> <span class=" icon-check icon-white" ></span>鉴定 </a>
+                                    <a class="btn btn btn-danger" href="../ccreate2/{{ item.id }}"> <span class=" icon-check icon-white" ></span>验收 </a>
+                                    </p>
+                                    </th>
+                                </div>
+
+                            </div>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                        <div class="row-fluid">
+                            {% if list_items.has_previous %}
+                            <a href="?page={{ list_items.previous_page_number }}">上一页</a>
+                            {% endif %}
+
+                            <span class="current">
+                            Page {{ list_items.number }} of {{ list_items.paginator.num_pages }}.
+                            </span>
+
+                            {% if list_items.has_next %}
+                            <a href="?page={{ list_items.next_page_number }}">下一页</a>
+                            {% endif %}
+                        </div>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
