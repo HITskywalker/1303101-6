@@ -3,29 +3,35 @@
 {% block title %}add{% endblock %}
 
 {% block content %}
-
+<style type="text/css">
+    .row_2{
+        width: 75%;
+    }
+</style>
     <div id="main-content">
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>View</h1>
-                    <h2>view all Paper</h2>
+                    <h1>浏览</h1>
+                    <h2>view all patents</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>All pages</h4>
+                        <h3>All patents</h3>
                     </div>
                     <div class="table-box">
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="th-title">Title</th>
-                                    <th class="th-author">Cate</th>
-                                    <th class="th-date">number</th>
-                                    <th class="th-date">institution</th>
-                                    <th class="th-date">gaintime</th>
+                                    <th class="th-date" style="width:200px;">专利名称</th>
+                                    <th class="th-date" style="width:100px;">分类</th>
+                                    <th class="th-date" style="width:100px;">专利编号</th>
+                                    <th class="th-date" style="width:100px;">授予单位</th>
+                                    <th class="th-date" style="width:100px;">授予时间</th>
+                                    <th class="th-date" style="width:100px;">人员列表</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,8 +44,8 @@
 																<td>{{ paper.gaintime|date:"Y-m-d" }}</td>
 																{% load mysome%}
 																<td><textarea name="yxzc" id="textarea" datatype="LimitB" min="0" max="150" msg="必须在150个汉字之内" style="width:98%" rows="1" readonly>{{names|key:forloop.counter0}}</textarea></td>
-																<td><a href="/delezhuanli/?zid={{paper.id}}">删除</a></td>
-																	<td><a href="/changezl/?zid={{paper.id}}">更新</a></td>
+																<td><a href="/patent/delezhuanli/?zid={{paper.id}}">删除</a>
+																	<a href="/patent/changezl/?zid={{paper.id}}">更新</a></td>
 															 </tr>
 															 {%endfor%}
                             </tbody>

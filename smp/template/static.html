@@ -7,14 +7,14 @@
         <div id="container">
             <div class="row_1">
                 <div class="page-header">
-                    <h1>Static</h1>
+                    <h1>统计</h1>
                     <h2>static for now</h2>
                 </div>
             </div>          
             <div class="row_2">
                 <div class="table-content" style="float: center;">
                     <div class="table-title">
-                        <h3>专著：共有{{sum1}}个记录</h3>
+                        <h3>专著：共有{{sum1}}个记录</h4>
                     </div>
                     <div class="table-box">
                         <table>
@@ -47,7 +47,7 @@
                         </table>
                     </div>
                     <div class="table-title">
-                        <h3> 专利：共有{{sum2}}个记录</h3>
+                        <h3> 专利：共有{{sum2}}个记录</h4>
                     </div>
                     <div class="table-box">
                         <table>
@@ -81,7 +81,7 @@
                         </table>
                     </div>
                     <div class="table-title">
-                        <h3>获奖：共有{{sum3}}个记录</h3>
+                        <h3>获奖：共有{{sum3}}个记录</h4>
                     </div>
                     <div class="table-box">
                         <table>
@@ -124,27 +124,27 @@
                     	<td>邀请国（境）外学者来访：  {{v}}次</td>
                     	{%endif %}
                     	{% endfor%}
-                    	{% for k,v in ans.items %}
+                    	{% for k,v in ans3.items %}
                     	{% if k == 'second'%}
                     	<td>主办或承办国际会议  ：  {{v}}次</td>
                     	{%endif %}
                     	{% endfor%}
-                    	{% for k,v in ans.items %}
+                    	{% for k,v in ans3.items %}
                     	{% if k == 'third'%}
                     	<td>主办或承办国内会议  ：  {{v}}次</td>
                     	{%endif %}
                     	{% endfor%}
-                    	{% for k,v in ans.items %}
+                    	{% for k,v in ans3.items %}
                     	{% if k == 'fourth'%}
                     	<td>国际会议上的大会特邀报告 ：  {{v}}次</td>
                     	{%endif %}
                     	{% endfor%}
-                    	{% for k,v in ans.items %}
+                    	{% for k,v in ans3.items %}
                     	{% if k == 'fifth'%}
                     	<td>国际期刊物编委  ：  {{v}}次</td>
                     	{%endif %}
                     	{% endfor%}
-                    	{% for k,v in ans.items %}
+                    	{% for k,v in ans3.items %}
                     	{% if k == 'sixth'%}
                     	<td>建立国际联合实验室  ：  {{v}}次</td>
                     	{%endif %}

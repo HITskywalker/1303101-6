@@ -3,6 +3,11 @@
 {% block title %}add{% endblock %}
 
 {% block content %}
+<style type="text/css">
+    .row_2{
+        width: 75%;
+    }
+</style>
     <div id="main-content">
         <div id="container">
             <div class="row_1">
@@ -14,15 +19,16 @@
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>专著：</h4>
+                        <h3>专著：</h3>
                     </div>
                     <div class="table-box">
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="th-title">Title</th>
-                                    <th class="th-author">Primary Author</th>
-                                    <th class="th-date">PublishDate</th>
+                                    <th class="th-author">题目</th>
+                                    <th class="th-author">作者</th>
+                                    <th class="th-date">出版日期</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,10 +42,9 @@
 																<td>{{ paper.name }}</td>
 																<td>{{ paper.institution}}</td>
 																<td>{{ paper.gaintime|date:"Y-m-d" }}</td>
-																<td>{{ paper.firstclass.name}}{{ paper.secondclass.name}}{{ paper.thirdclass.name}}{{ paper.fourthclass.name}}{{ paper.fifthclass.name}}</td>
-																<td><a href="/delezhuanzhu/?zid={{paper.id}}">删除</a></td>
-																<td><a href="/addzzau/?zid={{paper.id}}">添加作者</a></td>
-																	<td><a href="/changezz/?zid={{paper.id}}">更新</a></td>
+																<td><a href="/book/delezhuanzhu/?zid={{paper.id}}">删除</a>
+                                                                    <a href="/book/addzzau/?zid={{paper.id}}">添加作者</a>
+                                                                    <a href="/book/changezz/?zid={{paper.id}}">更新</a></td>
 															 </tr>
 															 {%endfor%}
 															 {% endif %}
@@ -48,17 +53,18 @@
                         </table>
                     </div>
                     <div class="table-title">
-                        <h3>专利：</h4>
+                        <h3>专利：</h3>
                     </div>
                     <div class="table-box">
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="th-title">Title</th>
-                                    <th class="th-author">Cate</th>
-                                    <th class="th-date">number</th>
-                                    <th class="th-date">institution</th>
-                                    <th class="th-date">gaintime</th>
+                                    <th class="th-author">题目</th>
+                                    <th class="th-author">类别</th>
+                                    <th class="th-date">专利号</th>
+                                    <th class="th-date">授予单位</th>
+                                    <th class="th-date">获得时间</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,9 +80,8 @@
 																<td>{{ paper.cate}}</td>
 																<td>{{ paper.number}}</td>
 																<td>{{ paper.institution}}</td>
-																<td>{{ paper.gaintime|date:"Y-m-d" }}</td>
-																<td><a href="/delezhuanli/?zid={{paper.id}}">删除</a></td>
-																	<td><a href="/changezl/?zid={{paper.id}}">更新</a></td>
+																<td>{{ paper.gaintime|date:"Y-m-d"}}</td>
+																<td><a href="/patent/delezhuanli/?zid={{paper.id}}">删除</a><a href="/patent/changezl/?zid={{paper.id}}">更新</a></td>
 															 </tr>
 															 {%endfor%}
 															 {% endif %}
@@ -85,16 +90,17 @@
                         </table>
                     </div>
                     <div class="table-title">
-                        <h3>获奖：</h4>
+                        <h3>获奖：</h3>
                     </div>
                     <div class="table-box">
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="th-title">name</th>
-                                    <th class="th-author">level</th>
-                                    <th class="th-author">rank</th>
-                                    <th class="th-date">gaintime</th>
+                                    <th class="th-author">奖项名</th>
+                                    <th class="th-author">获奖类别</th>
+                                    <th class="th-author">获奖等级</th>
+                                    <th class="th-date">获奖时间</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,12 +115,9 @@
 																<td>{{ prize.name}}</td>
 																<td>{{ prize.level}}</td>
 																<td>{{ prize.rank}}</td>
-																<td>{{prize.gaintime|date:"Y-m-d"}}}</td>
-																<td>
-																	{{ prize.firstclass.name}}{{ prize.secondclass.name}}{{ prize.thirdclass.name}}{{ prize.fourthclass.name}}{{ prize.fifthclass.name}}
-																</td>
-																<td><a href="/deleteprize/?id={{prize.id}}">删除</a></td>
-																	<td><a href="/changeprize/?id={{prize.id}}">更新</a></td>
+																<td>{{prize.gaintime|date:"Y-m-d"}}</td>
+																<td><a href="/prize/deleteprize/?id={{prize.id}}">删除</a>
+                                                                    <a href="/prize/changeprize/?id={{prize.id}}">更新</a></td>
 															 </tr>
 															 {%endfor%}
 															 {% endif %}
@@ -122,15 +125,16 @@
                         </table>
                     </div>
                     <div class="table-title">
-                        <h3>论文：</h4>
+                        <h3>论文：</h3>
                     </div>
                     <div class="table-box">
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="th-title">Title</th>
-                                    <th class="th-author">Primary Author</th>
-                                    <th class="th-date">PublishDate</th>
+                                    <th class="th-author">论文题目</th>
+                                    <th class="th-author">第一作者</th>
+                                    <th class="th-date">出版日期</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -141,16 +145,16 @@
                                 {% else %}
                                 {% for paper in pp %}
 															<tr>
-																<td><a href="/../detail/?id={{paper.id}}">{{ paper.pdfname }}</a></td>
+																<td><a href="/paper/detail/?id={{paper.id}}">{{ paper.pdfname }}</a></td>
 																{%for au in paper.auther.all%}
 																{%if paper.MauthorID == au.id%}
 																<td>{{ au.name}}</td>
 																{%endif%}
 																{%endfor%}
 																<td>{{ paper.timestamp|date:"Y-m-d H:i:s" }}</td>
-																<td><a href="/delete/?id={{paper.id}}">删除</a></td>
-																<td><a href="/addauthor/?id={{paper.id}}">添加作者</a></td>
-																	<td><a href="/change/?id={{paper.id}}">更新</a></td>
+																<td><a href="/paper/delete/?id={{paper.id}}">删除</a>
+                                                                    <a href="/paper/addauthor/?id={{paper.id}}">添加作者</a>
+                                                                    <a href="/paper/change/?id={{paper.id}}">更新</a></td>
 															 </tr>
 															 {%endfor%}
 															 {% endif %}

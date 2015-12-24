@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from learn.models import *
 from django.template import Context
 from django.core.exceptions import ObjectDoesNotExist
@@ -26,7 +26,7 @@ def add(request):
 			Start_date = start_date, 
 			End_date = end_date)
 		record.save()
-		return HttpResponse('ok')
+		return HttpResponseRedirect('/learn/view')
 	else:
 		return render(request, 'learn/add.html')
 
@@ -45,7 +45,7 @@ def update(request):
 			End_date = end_date)
 		record.delete()
 		new_record.save()
-		return HttpResponse('ok')
+		return HttpResponseRedirect('/learn/view')
 	else:
 		return render(request, 'learn/update.html', {'record':record})
 
@@ -55,4 +55,4 @@ def delete(request):
 	except Learn.DoesNotExist:
 		return HttpResponse('Do not exsit.')
 	record.delete()
-	return HttpResponse('ok')
+	return HttpResponseRedirect('/learn/view')

@@ -40,107 +40,108 @@ if(a == 1){
     }
 </script>
 
-<div id="page">
+<div id="page" style="background-color: #F7F7F7;">
     <div id="sidebar">
         <div class="menu">
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Award</li>
+                        <li>获奖记录</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                        <div name="sub"><a href="/viewprize">view</a></div>
-                        <div name="sub"><a href="/addprize">upload</a></div>
+                        <div name="sub"><a href="/prize/viewprize">浏览</a></div>
+                        <div name="sub"><a href="/prize/addprize">添加</a></div>
+{#                        <div name="sub"><a href="/searchprize">搜索</a></div>#}
                 </div>
             </div>
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Cooperation</li>
+                        <li>国际合作</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                        <div name="sub"><a href="/cop/view">view</a></div>
-                        <div name="sub"><a href="/cop/add">upload</a></div>
+                        <div name="sub"><a href="/cop/view">浏览</a></div>
+                        <div name="sub"><a href="/cop/add">添加</a></div>
                 </div>
             </div>
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Learn record</li>
+                        <li>进修记录</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                    <div name="sub"><a href="/learn/view">view</a></div>
-                    <div name="sub"><a href="/learn/add">upload</a></div>
+                    <div name="sub"><a href="/learn/view">浏览</a></div>
+                    <div name="sub"><a href="/learn/add">添加</a></div>
                 </div>
             </div>
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Paper</li>
+                        <li>论文</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                    <div name="sub"><a href="/view">view</a></div>
-                    <div name="sub"><a href="/upload">upload</a></div>
+                    <div name="sub"><a href="/paper/view">浏览</a></div>
+                    <div name="sub"><a href="/paper/upload">添加</a></div>
                 </div>
             </div>
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Patent</li>
+                        <li>专利</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                        <div name="sub"><a href="/viewzl">view</a></div>
-                        <div name="sub"><a href="/addzl">upload</a></div>
-                        <div name="sub"><a href="/addzlaf">addauthor</a></div>
+                        <div name="sub"><a href="/patent/viewzl">浏览</a></div>
+                        <div name="sub"><a href="/patent/addzl">添加</a></div>
+{#                        <div name="sub"><a href="/addzlaf">添加作者</a></div>#}
                 </div>
             </div>
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Project</li>
+                        <li>项目</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                        <div name="sub"><a href="/project/plist/">Project List</a></div>
-                        <div name="sub"><a href="/project/clist/">Project Checking</a></div>
-                        <div name="sub"><a href="/project/ilist/">Project Identify</a></div>
+                        <div name="sub"><a href="/project/plist/">项目列表</a></div>
+                        <div name="sub"><a href="/project/clist/">项目验收</a></div>
+                        <div name="sub"><a href="/project/ilist/">项目鉴定</a></div>
                 </div>
             </div>
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Writing</li>
+                        <li>著作</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                        <div name="sub"><a href="/viewzz">view</a></div>
-                        <div name="sub"><a href="/addzz">upload</a></div>
-                        <div name="sub"><a href="/addzzaf">addauthor</a></div>
+                        <div name="sub"><a href="/book/viewzz">浏览</a></div>
+                        <div name="sub"><a href="/book/addzz">添加</a></div>
+{#                        <div name="sub"><a href="/addzzaf">添加作者</a></div>#}
                 </div>
             </div>
             <div class="menuParent">
                 <div class="ListTitlePanel">
                     <div class="ListTitle">
-                        <li>Manage</li>
+                        <li>管理</li>
                         <div class="leftbgbt"> </div>
                     </div>
                 </div>
                 <div class="menuList">
-                        <div name="sub"><a href="/viewall">statistics</a></div>
-                        <div name="sub"><a href="/search">search</a></div>
-                        <div name="sub"><a href="/stat">score</a></div>
+                        <div name="sub"><a href="/manage/viewall">统计</a></div>
+                        <div name="sub"><a href="/manage/search">搜索</a></div>
+                        <div name="sub"><a href="/manage/stat">分数</a></div>
                 </div>
             </div>
         </div>
@@ -191,7 +192,7 @@ if(a == 1){
 
 $(function(){
 var pk=1;
-$(".title th").click(function(){
+$(".sort-th").click(function(){
         // 把要排序的内容添加到数组里
         var tIndex=parseInt($(this).index());        
         var valueArray=new Array();

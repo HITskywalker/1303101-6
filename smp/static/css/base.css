@@ -7,6 +7,7 @@ body{color:#000000;background:#F4F4F4; text-align:center; overflow:scroll; line-
 input {outline:none;}
 a{color:#000000;text-decoration:none} 
 a:hover{color:#BA2636}
+th{text-align: center;}
 
 ul#nav{height:60px; background:#1B76BA; margin:0 auto; text-align:left;}
 ul#nav li{display:inline; height:60px}
@@ -259,6 +260,7 @@ div#container{
     color: #555;
     background-color: #EEE;
     cursor: pointer;
+    text-align: center;
 }
 
 .th-title{
@@ -452,4 +454,9 @@ table#detail-table th{
     border-radius: 4px;
     background-color: #5E87B0;
     color: #FFF;
+}
+
+#demo3 input{
+    border: none;
+    background-color: #F7F7F7;
 }
