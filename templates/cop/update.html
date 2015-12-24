@@ -41,11 +41,11 @@
                                 </tr>
                                 <tr class="tr">
                                     <td class="td-left">开始时间</td>
-                                    <td class="td-right"><input name="start_date" value={{cop.start_date|date:"Y-m-d"}} type="date"></td>
+                                    <td class="td-right"><input style="width: 237px;" name="start_date" value={{cop.start_date|date:"Y-m-d"}} type="date"></td>
                                 </tr>
                                 <tr class="tr">
                                     <td class="td-left">结束时间</td>
-                                    <td class="td-right"><input name="end_date" value={{cop.end_date|date:"Y-m-d"}} type="date"></td>
+                                    <td class="td-right"><input style="width: 237px;" name="end_date" value={{cop.end_date|date:"Y-m-d"}} type="date"></td>
                                 </tr>
                                 <tr class="tr">
                                     <td class="td-left">地点</td>
@@ -53,7 +53,17 @@
                                 </tr>
                                 <tr class="tr">
                                     <td class="td-left">访问目的</td>
-                                    <td class="td-right"><input name="purpose" value={{cop.purpose}} type="text"></td>
+                                    <td class="td-right">
+                                        <select class="form-control" id="id_source" name="purpose" style="width: 237px;">
+                                        <option value="1">邀请国（境）外学者来访</option>
+                                        <option value="2">主办或承办国际会议</option>
+                                        <option value="3">主办或承办国内会议</option>
+                                        <option value="4">国际会议上的大会特邀报告</option>
+                                        <option value="5">国际期刊物编委</option>
+                                        <option value="6">建立国际联合实验室 </option>
+                                    </select>
+                                        <script>document.getElementById("id_source")[{{cop.purpose}}].selected=true;</script>
+                                    </td>
                                 </tr>
                                 <tr class="tr">
                                     <td class="td-left">新闻报道名称</td>
@@ -103,10 +113,9 @@
                                         </select>
                                         <script>document.getElementById("select")[{{cop.p_num}}-1].selected=true;</script>
                                         <button type="button" onclick="myfun()">确认人员数量</button>
-                                        <div id="demo">
-                                        </div>
                                     </td>
                                 </tr>
+                                <tr class="tr"><td class="td-left"></td><td class="td-right"><div id="demo"></div></td></tr>
                             </table>
                             <input class="submit-input-2" type="submit" value="提交">
                         </form>

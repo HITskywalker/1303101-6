@@ -12,7 +12,7 @@ class Cop(models.Model):
 	start_date = models.DateField()
 	end_date = models.DateField()
 	place = models.CharField(max_length = 50)
-	purpose = models.CharField(max_length = 50)
+	purpose = models.IntegerField()
 	report_name = models.CharField(max_length = 50)
 	report_url = models.URLField()
 	save_report = models.BooleanField()

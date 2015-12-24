@@ -19,7 +19,7 @@
             <div class="row_2">
                 <div class="table-content">
                     <div class="table-title">
-                        <h3>All papers</h4>
+                        <h3>All papers</h3>
                     </div>
                     <div class="table-box">
                         <table>
@@ -34,7 +34,7 @@
                             <tbody>
                                 {% for paper in paper_list %}
 															<tr>
-																<td><a href="/../detail/?id={{paper.id}}">{{ paper.pdfname }}</a></td>
+																<td><a href="/paper/detail/?id={{paper.id}}">{{ paper.pdfname }}</a></td>
 																{%for au in paper.auther.all%}
 																{%if paper.MauthorID == au.id%}
 																<td>{{ au.name}}</td>
@@ -42,13 +42,13 @@
 																{%endfor%}
 																<td>{{ paper.timestamp|date:"Y-m-d" }}</td>
 																<td><a href="#" onclick="myFunction()">删除</a>
-																<a href="/addauthor/?id={{paper.id}}">添加作者</a>
-                                                                    <a href="/change/?id={{paper.id}}">更新</a></td>
+																<a href="/paper/addauthor/?id={{paper.id}}">添加作者</a>
+                                                                    <a href="/paper/change/?id={{paper.id}}">更新</a></td>
                                                                 <script>
                                                                 function myFunction()
                                                                 {
                                                                     if(confirm("删除是不可恢复的，你确认要删除吗？")){
-                                                                        window.location.href = "/delete/?id={{paper.id}}";
+                                                                        window.location.href = "/paper/delete/?id={{paper.id}}";
                                                                     }
                                                                 }
                                                                 </script>

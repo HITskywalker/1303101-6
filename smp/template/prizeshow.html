@@ -44,12 +44,12 @@
         								{% load mysome%}
         								<td><textarea name="yxzc" id="textarea" datatype="LimitB" min="0" max="150" msg="必须在150个汉字之内" style="width:98%" rows="1" readonly>{{names|key:forloop.counter0}}</textarea></td>
         								<td><a href="#" onclick="myFunction()">删除</a>
-                                            <a href="/changeprize/?id={{prize.id}}">更新</a></td>
+                                            <a href="/prize/changeprize/?id={{prize.id}}">更新</a></td>
                                         <script>
                                         function myFunction()
                                         {
                                             if(confirm("删除是不可恢复的，你确认要删除吗？")){
-                                                window.location.href = "/deleteprize/?id={{prize.id}}";
+                                                window.location.href = "/prize/deleprize/?id={{prize.id}}";
                                             }
                                         }
                                         </script>
