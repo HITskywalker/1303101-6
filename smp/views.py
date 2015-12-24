@@ -165,7 +165,7 @@ def login_view(request):
 
 def logout_view(request):
 	logout(request)
-	response = ok()
+	response = HttpResponseRedirect('/login/')
 	response.delete_cookie('is_log')
 	response.delete_cookie('username')
 	return response
