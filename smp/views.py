@@ -100,7 +100,7 @@ def ViewPaper(request):
 		except ObjectDoesNotExist:
 			return notvalid()
 	else:
-		p = Paper.objects.all()
+		p = Paper.objects.filter(user=request.user)
 		return render_to_response("view.html", {"paper_list": p, "dic": json.dumps(dic)})
 
 
@@ -139,6 +139,8 @@ def login_view(request):
 
 			if user:
 				login(request, user)
+				if(request.user.is_superuser == 1):
+					return HttpResponseRedirect("/admin")
 				# response.set_cookie("is_login","1")
 				print request.user
 				List = {}
@@ -558,8 +560,8 @@ def prizeshow(req):
 		name = []
 		for i in allprize:
 			st = ""
-			for j in i.user.all():
-				st += j.prauthor.name
+			for j in i.mpr.all().order_by("cate"):
+				st += j.author.name
 				st += ","
 			name.append(st)
 		return render_to_response("prizeshow.html", {"all": allprize, "names": name})
@@ -836,8 +838,8 @@ def viewzhuanli(req):
 	name = []
 	for i in qset:
 		st = ""
-		for j in i.user.all():
-			st += j.zlauthor.name
+		for j in i.mzl.all().order_by("cate"):
+			st += j.author.name
 			st += ","
 		name.append(st)
 	return render(req, 'viewzhuanli.html', {'paper_list': qset, "names": name})
@@ -970,8 +972,8 @@ def viewzhuanzhu(req):
 	name = []
 	for i in qset:
 		st = ""
-		for j in i.user.all():
-			st += j.zzauthor.name
+		for j in i.mzz.all().order_by("cate"):
+			st += j.author.name
 			st += ","
 		name.append(st)
 	return render(req, 'viewzhuanzhu.html', {'paper_list': qset, "names": name})
@@ -1024,7 +1026,7 @@ def addzlau(req):
 """
 """
 
-	
+
 def addzlau2(req):
 	if(req.method == "GET"):
 		auid = req.GET['auid']
@@ -1056,17 +1058,45 @@ def addzlau2(req):
 		notvalid()
 """
 
+def is_valid_date(str):
+
+    '''判断是否是一个有效的日期字符串'''
+
+    try:
+
+        time.strptime(str, "%Y-%m-%d")
+
+        return True
+
+    except:
+
+        return False
+
 
 def searchall(req):
 	if (req.method == "GET"):
 		return render_to_response("answerform.html")
-	elif (req.method == "POST"):
+	elif(req.method == "POST"):
 		print req.POST['name']
-		pr = req.user.prize_set.filter(name__contains=req.POST['name'])
-		zl = req.user.zhuanli_set.filter(name__contains=req.POST['name'])
-		zz = req.user.zhuanzhu_set.filter(name__contains=req.POST['name'])
-		pp = req.user.paper_set.filter(pdfname__contains=req.POST['name'])
-		return render_to_response("answer.html", {"all": pr, "zl": zl, "zz": zz, "pp": pp})
+		pr = req.user.prize_set.filter(name__contains = req.POST['name'])
+		pr = pr | req.user.prize_set.filter(rank__contains = req.POST['name'])
+		pr = pr | req.user.prize_set.filter(level__contains = req.POST['name'])
+		zl = req.user.zhuanli_set.filter(name__contains = req.POST['name'])
+		zl = zl | req.user.zhuanli_set.filter(institution__contains = req.POST['name'])
+		zz = req.user.zhuanzhu_set.filter(name__contains = req.POST['name'])
+		zz = zz | req.user.zhuanzhu_set.filter(institution__contains = req.POST['name'])
+		pp = req.user.paper_set.filter(pdfname__contains = req.POST['name'])
+		ln = req.user.learn_set.filter(Institution__contains = req.POST['name'])
+		ln = ln | req.user.learn_set.filter(Content__contains = req.POST['name'])
+		cp = req.user.cop_set.filter(place__contains = req.POST['name'])
+		if(is_valid_date(req.POST['name'])):
+			ln = ln | req.user.learn_set.filter(End_date__lte = req.POST['name'])
+			pr = pr | req.user.prize_set.filter(gaintime__lte = req.POST['name'])
+			zl = zl | req.user.zhuanli_set.filter(gaintime__lte = req.POST['name'])
+			zz = zz | req.user.zhuanzhu_set.filter(gaintime__lte = req.POST['name'])
+			pp = pp | req.user.paper_set.filter(timestamp__lte = req.POST['name'])
+			cp = cp | req.user.cop_set.filter(end_date__lte = req.POST['name'])
+		return render_to_response("answer.html",{"all":pr,"zl":zl,"zz":zz,"pp":pp,"ln":ln,"cp":cp})
 
 
 def countcp(req):
@@ -1120,4 +1150,4 @@ def stav(req):
 	my6 = uset.paper_set.count()
 	return render_to_response("aboutme.html",
 	                          {"sum1": sum1, "sum2": sum2, "sum3": sum3, "sum4": sum4, "sum5": sum5, "sum6": sum6,
-	                           "my1": my1, "my2": my2, "my3": my3, "my4": my4, "my5": my5, "my6": my6})
+	                           "my1": my1, "my2": my2, "my3": my3, "my4": my4, "my5": my5, "my6": my6,"user":uset})
