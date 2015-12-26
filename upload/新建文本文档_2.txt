@@ -1,0 +1,76 @@
+from string import *
+next = [0 for i in range(256)]
+check = [0 for i in range(256)]
+base = [0 for i in range(256)]
+F = [0 for i in range(256)]
+newstate = 0
+def got(pattern,size):
+    global newstate
+    global next,check,base
+    ls = [a[0] for a in pattern]
+    ls = list(set(ls))
+    ls.sort()
+    cha = ord(ls[0]) - 1
+    base[0] = 0 - ord(ls[0])
+    for i in ls:
+        newstate = newstate + 1
+        next[ord(i) - cha] = newstate
+        check[newstate] = 0 
+    for i in range(1,size):
+        ls = [a[i] for a in pattern if((len(a) > i)]
+        ls = list(set(ls))
+        ls.sort()
+        ind = next.index(0,1)
+        #print ind
+        cha = ord(ls[0]) - ind
+        #print ls
+        temp = [(ord(a) - ord(ls[0])) for a in ls]
+        #print temp 
+        boolean = True
+        while(boolean):
+            for i in temp:
+                if(next[ind + i] != 0):
+                    ind = ind + 1
+                    break
+                elif(i == temp[-1]):
+                    boolean = False
+        base[newstate] = (ind + temp[0]) - ord(ls[0])
+        oldstate = newstate
+        for i in temp :
+            #print ind
+            #print i
+            newstate = newstate + 1 
+            next[ind + i] = newstate
+            check[newstate] = oldstate
+        #print next
+        #print base
+        #print check
+
+
+def faliue(pattern):
+    global F
+    global next,base,check
+    state = 0
+    ls = [a[0] for a in pattern]
+    ls = list(set(ls))
+    ls.sort()
+    lis = [next(base[state] + ord(a)) for a in ls]
+    state = state + 1
+    while(!len(lis)):
+        tem = lis.pop
+        for i in lis:
+        
+    
+        
+    
+# output :[[string,string],[],...]
+# moshi : [string,string,...]
+f = open("pattern.txt","r")
+lines = f.readlines()
+pattern = [line.strip() for line in lines]
+size = [len(a) for a in pattern]
+#print pattern
+size.sort(reverse = True)
+#print size
+got(pattern,size[0])
+#print pattern

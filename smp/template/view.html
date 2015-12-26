@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Page Title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Description" />
+	<link rel="stylesheet" href="Stylesheet Location" type="text/css" />
+</head>
+
+<body>
+	<h1 align= "center">Page Title</h1>
+<form method="post">
+<table border=1 align="center">
+{% for paper in paper_list %}
+ <tr>
+ {%for au in paper.auther.all%}
+ 	<td>{{ au.name}}</td>
+ 	<td>{{ au.institution}}</td>
+ {%endfor%}
+ {%for jou in paper.jounery.all%}
+ 	<td>{{ jou.J_name}}</td>
+ {%endfor%}
+  <td>{{ paper.timestamp|date:"Y-m-d H:i:s" }}</td>
+  <td>{{ paper.pdf|cut:"upload/" }}</td>
+  <td><a href="/delete/?id={{paper.id}}">删除</a></td>
+ </tr>
+{% endfor %}
+</table>
+</form>
+	<footer>
+	</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+"""
+created on 2015/9/27 at 13:48
+"""
+import copy
+import sys
+
+ALPHABET = [chr(i) for i in range(65, 90)]
+DEBUG = True
+WHICHDAG = 3
+
+
+class Node:
+    """
+    :param name,reliability,price,depth:
+    :a class for Node
+    """
+    def __init__(self, name, reliability, price, depth):
+        self.__name = name
+        self.__reliability = reliability
+        self.__price = price
+        self.__depth = depth
+
+    def name(self):
+        """
+        :param self:
+        :return: the name of self
+        """
+        return self.__name
+
+    def price(self):
+        """
+        :param self:
+        :return: the price of self
+        """
+        return self.__price
+
+    def reliability(self):
+        """
+        :param self:
+        :return: the reliability of self
+        """
+        return self.__reliability
+
+    def depth(self):
+        """
+        :param self:
+        :return: the depth of self
+        """
+        return self.__depth
+
+    def __str__(self):
+        return "node: name=[%s] reliability=[%.2f] price=[%.2f] depth=[%d]" \
+               % (self.__name, self.__reliability, self.__price, self.__depth)
+
+
+def processreq(whichdag=0):
+    """
+    :param WHICHDAG:
+    :return: the required reli and the required price
+    """
+    reqtxt = open("..\\res\\REQ.txt", "r")
+    lines = reqtxt.read().split('\n')
+    reqtxt.close()
+    import re
+    numberpat = re.compile(r'\d+\.*\d*') #reli and price
+    reqs = [numberpat.findall(line) for line in lines]
+    return float(reqs[whichdag][0]), int(reqs[whichdag][1])
+
+REQRELIABILITY, REQPRICE = processreq(WHICHDAG)
+
+def processdag():
+    """
+    :return: a list contains node name in process.txt
+    """
+    nodealphasarray = []
+    processtxt = open("..\\res\\PROCESS.txt", "r")
+    lines = processtxt.read().split('\n')
+    processtxt.close()
+    for line in lines:
+        nodealphas = set()
+        for char in line:
+            if char in ALPHABET:
+                nodealphas.add(char)
+        nodealphas = sorted(list(nodealphas))
+        nodealphasarray.append(copy.deepcopy(nodealphas))
+
+    return nodealphasarray
+
+
+
+
+def getnodealphas(line=0):
+    """
+    :return: call processdag and return a list
+    """
+    return processdag()[line]
+
+
+def transtonode(linestr, depth):
+    """
+    :return: a list of node
+    """
+    nodeinfo = linestr.split()
+    name = nodeinfo[0]
+    reliability = float(nodeinfo[2])
+    price = float(nodeinfo[4])
+    node = Node(name, reliability, price, depth)
+    return node
+
+
+def processservice(whichdag=0):
+    """
+    :return: a two-dimen node array contains all nodes
+    """
+    servicetxt = open("..\\res\\SERVICE.txt", 'r')
+    lines = servicetxt.read().split('\n')
+    servicetxt.close()
+    nodealphas = getnodealphas(whichdag)
+    dagservice = []
+    depth = 0
+
+    def getlinefromalpha(alpha):
+        """
+        :return: a two-dimen node array contains all nodes
+        """
+        service = []
+        for line in lines:
+            if line.startswith(alpha):
+                service.append(transtonode(line, depth))
+
+        filterservice = getfilterservice(service)
+        return copy.deepcopy(filterservice)
+
+    for alpha in nodealphas:
+        dagservice.append(getlinefromalpha(alpha))
+        depth += 1
+
+    return dagservice
+
+
+def getdagservice(whichdag=0):
+    return processservice(whichdag)
+
+
+def getfilterservice(service):
+    """
+    :param service: the data whose name contains the same alpha
+    :return: arrays filtered twice based on price and reli
+    """
+    pricesortedservice = sorted(service, key=lambda n: n.price())
+    relisortedservice = sorted(
+        pricesortedservice, 
+        key=lambda n: n.reliability(), 
+        reverse=True)  # sort with price and reli
+
+    filterpriceservice = []
+    occurreli = relisortedservice[0].reliability()
+    filterpriceservice.append(relisortedservice[0])
+    for node in relisortedservice:
+        if node.reliability() != occurreli:
+            occurreli = node.reliability()
+            filterpriceservice.append(node)
+
+    filterreliservice = []
+    occurprice = filterpriceservice[0].price()
+    filterreliservice.append(filterpriceservice[0])
+    for node in filterpriceservice:
+        if node.price() < occurprice:
+            occurprice = node.price()
+            filterreliservice.append(node)
+
+    return filterreliservice
+
+class DfsAlgorithm:
+    """
+    Never should Object-Oriented be recommended in Python
+    """
+    def __init__(self, inputArrays):
+        self.__inputarrays = inputArrays
+        self.__maxdepth = len(self.__inputarrays)
+        self.__visitdict = {}
+        self.__path = []
+        self.__curmaxresult = 0
+        self.__curmaxpath = []
+        self.__pricesum = 0
+        self.__reliabilityproduct = 1
+        self.__resultq = 0
+        self.__minprice = sys.maxsize
+        self.__maxreliability = 0
+
+    def depthFirstSearch(self):
+        for n in self.__firstDepthNodes():
+
+            # reset sum and product
+            self.__pricesum = 0
+            self.__reliabilityproduct = 1
+            self.__path = []
+            if n.name() not in self.__visitdict:
+                self.__dfs(n)
+
+    def printBestPath(self):
+        #print("best path:", end=" ")
+        nodes = self.__curmaxpath
+        #for node in nodes:
+            #print("[%s]" % node.name(), end=" ")
+        print("END")
+        priceSum = 0
+        reliabilityProduct = 1
+        for node in nodes:
+            priceSum += node.price()
+            reliabilityProduct *= node.reliability()
+        print("price sum: %f" % priceSum)
+        print("reliability: %f" % reliabilityProduct)
+
+        resultQ = reliabilityProduct - priceSum / 100
+        print("Q: %f" % resultQ)
+        print("\n------\n")
+
+    def __visit(self, node):
+        self.__path.append(node)
+        self.__visitdict[node.name()] = True  # set visit
+
+    def __findBestPath(self):
+        self.__resultq = self.__reliabilityproduct - self.__pricesum / 100
+        if self.__resultq > self.__curmaxresult:
+            self.__curmaxresult = self.__resultq
+            self.__curmaxpath = copy.deepcopy(self.__path)
+            self.__minprice = self.__pricesum
+            self.__maxreliability = self.__reliabilityproduct
+
+    def __dfs(self, node):
+        self.__visit(node)
+
+        # get next depth nodes
+        nextNodes = []
+        nextDepth = node.depth() + 1
+        if nextDepth < self.__maxdepth:
+            nextNodes = self.__inputarrays[nextDepth]
+
+        self.__pricesum += node.price()  # compute sum and product
+        self.__reliabilityproduct *= node.reliability()
+
+        # under req and under current best
+        if (self.__pricesum <= REQPRICE \
+        and self.__reliabilityproduct >= REQRELIABILITY) \
+                and (self.__pricesum <= self.__minprice \
+                or self.__reliabilityproduct >= self.__maxreliability):
+            if len(nextNodes) == 0:
+                self.__findBestPath()
+
+            for nextNode in nextNodes:
+                self.__dfs(nextNode)
+                self.__path.pop()
+                self.__revertVisitNode(nextNode)
+
+    def __revertVisitNode(self, node):
+        self.__pricesum -= node.price()
+        self.__reliabilityproduct /= node.reliability()
+
+    def __firstDepthNodes(self):
+        return self.__inputarrays[0]
+
+
+def run(WHICHDAG=0):
+    DAGServiceArrays = getdagservice(WHICHDAG)
+    dfs = DfsAlgorithm(DAGServiceArrays)
+    dfs.depthFirstSearch()
+    dfs.printBestPath()
+
+
+if __name__ == '__main__':
+    import cProfile
+    for WHICHDAG in [0, 1, 2, 3]:
+        cProfile.run("run(WHICHDAG)")
