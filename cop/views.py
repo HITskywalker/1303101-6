@@ -10,7 +10,7 @@ import json
 import time
 
 def view(request):
-	cop_list = Cop.objects.all()
+	cop_list = request.user.cop_set.all()
 	return render(request, 'cop/view.html', {'cop_list':cop_list})
 
 def add(request):
