@@ -1,36 +1,150 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-
 <head>
-	<title>Page Title</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="description" content="Description" />
-	<link rel="stylesheet" href="Stylesheet Location" type="text/css" />
+<meta charset="utf-8" />
+<title>View</title>
+<link href="../../static/css/base.css" rel="stylesheet" type="text/css" />
 </head>
-
 <body>
-	<h1 align= "center">Page Title</h1>
-<form method="post">
-<table border=1 align="center">
-{% for paper in paper_list %}
- <tr>
- {%for au in paper.auther.all%}
- 	<td>{{ au.name}}</td>
- 	<td>{{ au.institution}}</td>
- {%endfor%}
- {%for jou in paper.jounery.all%}
- 	<td>{{ jou.J_name}}</td>
- {%endfor%}
-  <td>{{ paper.timestamp|date:"Y-m-d H:i:s" }}</td>
-  <td>{{ paper.pdf|cut:"upload/" }}</td>
-  <td><a href="/delete/?id={{paper.id}}">删除</a></td>
- </tr>
-{% endfor %}
-</table>
-</form>
-	<footer>
-	</footer>
+<div>
+  <ul id="nav">
+    <li><a href="index.html">科研成果管理系统</a></li>
+    <li id="sign"><a href="/login/">登陆</a></li>
+  </ul>
+</div>
+<script>
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} 
 
+	
+</script>
+<div id="page">
+    <div id="sidebar">
+        <ul class="main">
+            <li class="main">
+                <a class="main" href="javascript:;">Pages</a>
+                <ul class="sub">
+                    <li color=red><a href="/../view">view</a></li>
+                    <li><a href="/../upload">upload</a></li>
+                    <li><a href="/../search">search</a></li>
+                    <li><a href="/../stat">Statistics</a></li>
+                </ul>
+            </li>
+            <script type="text/javascript"> 
+    var a = getCookie("is_log")
+    var b = getCookie("username")
+    if(a == 1){
+    	document.getElementById("sign").innerHTML = "<a href="+"/logout/"+">登出</a>"
+    document.getElementById("vi").href = "/.."+"/view/"+"?username="+b
+    	}
+</script>
+            <li class="main">
+                <a class="main" href="/project/plist/">Projects</a>
+                <ul class="sub">
+                    <li><a href="/project/mlist/">member</a></li>
+                    <li><a href="/project/clist/">check</a></li>
+                    <li><a href="/project/ilist/">identify</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/viewprize">Awards</a>
+                <ul class="sub">
+                    <li><a href="/viewprize">view</a></li>
+                    <li><a href="/addprize">upload</a></li>
+                    <li><a href="/searchprize">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/cop/view">Coperation</a>
+                <ul class="sub">
+                    <li><a href="/cop/view">view</a></li>
+                    <li><a href="/cop/add">upload</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/learn/view">learn</a>
+                <ul class="sub">
+                    <li><a href="/learn/view">view</a></li>
+                    <li><a href="/learn/add">upload</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/viewzz">Writings</a>
+                <ul class="sub">
+                    <li><a href="/viewzz">view</a></li>
+                    <li><a href="/addzz">upload</a></li>
+                    <li><a href="/addzzaf">addauthor</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/viewzl">Patents</a>
+                <ul class="sub">
+                    <li><a href="/viewzl">view</a></li>
+                    <li><a href="/addzl">upload</a></li>
+                    <li><a href="/addzlaf">addauthor</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>View</h1>
+                    <h2>view all Paper</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>All pages</h4>
+                    </div>
+                    <div class="table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="th-title">Title</th>
+                                    <th class="th-author">Primary Author</th>
+                                    <th class="th-date">PublishDate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for paper in paper_list %}
+															<tr>
+																<td><a href="/../detail/?id={{paper.id}}">{{ paper.pdfname }}</a></td>
+																{%for au in paper.auther.all%}
+																{%if paper.MauthorID == au.id%}
+																<td>{{ au.name}}</td>
+																{%endif%}
+																{%endfor%}
+																<td>{{ paper.timestamp|date:"Y-m-d H:i:s" }}</td>
+																<td><a href="/delete/?id={{paper.id}}">删除</a></td>
+																<td><a href="/addauthor/?id={{paper.id}}">添加作者</a></td>
+																	<td><a href="/change/?id={{paper.id}}">更新</a></td>
+															 </tr>
+															 {%endfor%}
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
 </body>
-
 </html>

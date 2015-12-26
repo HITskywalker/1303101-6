@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Add patent</title>
+<link href="../../static/css/base.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+  <ul id="nav">
+    <li><a href="index.html">科研成果管理系统</a></li>
+    <li id="sign"><a href="/login/">登陆</a></li>
+  </ul>
+</div>
+<div id="page">
+    <div id="sidebar">
+        <ul class="main">
+            <li class="main">
+                <a class="main" href="javascript:;">Pages</a>
+                <ul class="sub">
+                    <li><a id="vi"href="/../view">view</a></li>
+                    <li><a href="/../upload">upload</a></li>
+                    <li><a href="/../search">search</a></li>
+                </ul>
+            </li>
+<script>
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} 
+var a = getCookie("is_log")
+    var b = getCookie("username")
+    if(a == 1){
+    	document.getElementById("sign").innerHTML = "<a href="+"/logout/"+">登出</a>"
+    document.getElementById("vi").href = "/.."+"/view/"+"?username="+b
+    	}
+	
+</script>
+            <li class="main">
+                <a class="main" href="project.html">Projects</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="award.html">Awards</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="patent.html">Patents</a>
+                <ul class="sub">
+                    <li><a href="view.html">view</a></li>
+                    <li><a href="upload.html">upload</a></li>
+                    <li><a href="search.html">search</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="main-content">
+        <div id="container">
+            <div class="row_1">
+                <div class="page-header">
+                    <h1>Add</h1>
+                    <h2>add your learn record</h2>
+                </div>
+            </div>          
+            <div class="row_2">
+                <div class="table-content">
+                    <div class="table-title">
+                        <h3>AddRecord</h4>
+                    </div>
+                    <div>
+                        <form method="post">
+                        {% csrf_token %}
+                            <table>
+                                <tr class="tr">
+                                    <td class="td-left">Institution</td>
+                                    <td class="td-right"><input name="Institution" type="text"></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Content</td>
+                                    <td class="td-right"><input name="Content" type="text"></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">Start_date</td>
+                                    <td class="td-right"><input name="Start_date" type="date"></td>
+                                </tr>
+                                <tr class="tr">
+                                    <td class="td-left">End_date</td>
+                                    <td class="td-right"><input name="End_date" type="date"></td>
+                                </tr>
+                            </table>
+                            <input class="submit-input-2" type="submit" value="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="news">
+        <div class="new-pages"></div>
+        <div class="new-projects"></div>
+    </div>
+</div>
+
+<script>
+function myfun()
+{
+    var obj = document.getElementById("select");
+    var index = obj.selectedIndex;
+    var text = obj.options[index].text;
+    x=document.getElementById("demo");
+    var string = "";
+    for(var i=0; i<Number(text); i++){
+        string += ("<input type='text' name='member_name" + String(i) + "'><br>");
+    }
+    x.innerHTML = string;
+}
+</script>
+
+</body>
+</html>

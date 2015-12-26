@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+<head>
+    <script src="script.js"></script>
+</head>
+<body>
+
+<div>
+    <form method="post">
+    {% csrf_token %}
+        <table>
+            <tr>
+                <td>Title</td>
+                <td><input name="title" type="text"></td>
+            </tr>
+            <tr>
+                <td>Patentee</td>
+                <td><input name="patentee_name" type="text"></td>
+            </tr>
+            <tr>
+                <td>Patent_num</td>
+                <td><input name="patent_num" type="text"></td>
+            </tr>
+            <tr>
+                <td>Granting_units</td>
+                <td><input name="granting_units" type="text"></td>
+            </tr>
+            <tr>
+                <td>Granting_date</td>
+                <td><input name="granting_date" type="date"></td>
+            </tr>
+            <tr>
+                <td>Member</td>
+                <td>
+                    <select id="select" name="num">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <button type="button" onclick="myfun()">点击这里</button>
+                    <div id="demo">
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="submit">
+    </form>
+</div>
+
+<script>
+function myfun()
+{
+    var obj = document.getElementById("select");
+    var index = obj.selectedIndex;
+    var text = obj.options[index].text;
+    x=document.getElementById("demo");
+    var string = "";
+    for(var i=0; i<Number(text); i++){
+        string += ("<input type='text' name='member_name" + String(i) + "'><br>");
+    }
+    x.innerHTML = string;
+}
+</script>
+
+</body>
+</html>

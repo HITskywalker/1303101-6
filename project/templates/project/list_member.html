@@ -1,0 +1,58 @@
+
+{% extends "base2.html" %}
+
+{% block title %}  Member -- List {% endblock %}
+
+{% block heading %} 
+<h1> Member</h1>
+<h2> List Records</h2>
+{% endblock %}
+{% block content %} 
+
+<table class="table table-hover" >
+        <caption class="menu">
+            <ul>
+                <li style="float: left"><h1>人员列表</h1></li>
+                <li style="float: right"><h1><a href="../mcreate/">Add New</a></h1></li>
+            </ul>
+        </caption>
+        <thead>
+          <tr>
+             <th>姓名</th>
+             <th>user_id</th>
+              <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in list_items.object_list %}
+            <tr>
+            <div class="row-fluid">
+                <div class="span11">
+                    <th><h5>{{item.name}}</h5></th>
+                    <th><h5>{{ item.age }}</h5></th>
+                    <th>
+                    <p>
+                    <a class="btn btn-success" href="../medit/{{ item.id }}"> <span class=" icon-check icon-white" ></span>修改 </a>
+                    </p>
+                    </th>
+                </div>
+
+            </div>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <div class="row-fluid">
+        {% if list_items.has_previous %}
+        <a href="?page={{ list_items.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+        Page {{ list_items.number }} of {{ list_items.paginator.num_pages }}.
+        </span>
+
+        {% if list_items.has_next %}
+        <a href="?page={{ list_items.next_page_number }}">下一页</a>
+        {% endif %}
+        </div>
+    </table>
+{% endblock %}

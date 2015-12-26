@@ -1,0 +1,46 @@
+
+{% extends "base2.html" %}
+
+{% block title %} Project - View {% endblock %}
+{% block content %}
+    <table class="table table-hover">
+        <tr>
+            <td>项目名称：</td>
+            <td>{{ pname }}</td>
+        </tr>
+        <tr>
+            <td>项目合同号：</td>
+            <td>{{ instance.project_num }}</td>
+        </tr>
+        <tr>
+            <td>项目来源：</td>
+            <td>{{ instance.source }}</td>
+        </tr>
+        <tr>
+            <td>负责人：</td>
+            <td>{{ instance.person }}</td>
+        </tr>
+        <tr>
+            <td>项目资金：</td>
+            <td> {{instance.bund}} </td>
+        </tr>
+
+        <tr>
+            <td>开始时间：</td>
+            <td>{{ instance.start_time }}></td>
+        </tr>
+        <tr>
+            <td>结束时间：</td>
+            <td>{{ instance.end_time }}</td>
+        </tr>
+        <tr>
+            <td>项目人员：</td>
+            <td>
+            {% for item in team %}
+                {{ item }}、
+            {% endfor %}
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}

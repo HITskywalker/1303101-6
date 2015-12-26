@@ -1,0 +1,14 @@
+
+{% extends "base2.html" %}
+
+{% block title %} Project - Edit {% endblock %}
+
+{% block heading %} <h1> Project</h1><h2> Edit </h2> {% endblock %}
+{% block content %} 
+<table>
+<form action="" method="POST"> {% csrf_token %}
+  {{form}}
+  <tr><td><input type="submit" value="Save" /></td><td><input type="reset" value="重置"/></td><td></td></tr>
+</form>
+</table>
+{% endblock %}

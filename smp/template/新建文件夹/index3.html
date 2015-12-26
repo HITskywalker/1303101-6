@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哈哈哈哈哈</title>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/exporting.js"></script>
+    <script>
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    type: 'column',
+                    margin: [ 50, 50, 100, 80]
+                },
+                title: {
+                    text: '这里是题目'
+                },
+                xAxis: {
+                    {#  yinruwomendeshuju                  #}
+                    categories: {{ categories | safe }},
+
+                    labels: {
+                        rotation: 0,
+                        align: 'right',
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '这里是y轴'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: '访问量: <b>{point.y:.1f}</b>',
+                },
+                series: [{
+                    name: '今天的日志',
+                    data: {{ data }},
+                    dataLabels: {
+                        enabled: false,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        x: 4,
+                        y: 10,
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif',
+                            textShadow: '0 0 3px black'
+                        }
+                    }
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container" style="width:500px;height:400px"></div>
+</body>
+</html>

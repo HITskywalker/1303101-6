@@ -1,26 +1,147 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Search</title>
+		<link href="../../static/css/base.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div>
+			<ul id="nav">
+				<li><a href="index.html">科研成果管理系统</a></li>
+					<li id="sign"><a href="/login/">登陆</a></li>
+				</ul>
+<script>
+function getCookie(name) 
+{ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+ 
+    if(arr=document.cookie.match(reg))
+ 
+        return unescape(arr[2]); 
+    else 
+        return null; 
+} 
 
-<head>
-	<title>Page Title</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="description" content="Description" />
-	<link rel="stylesheet" href="Stylesheet Location" type="text/css" />
-</head>
+	
+</script>
+			</div>
+			<div id="page">
+				<div id="sidebar">
+					<ul class="main">
+						<li class="main">
+							<a class="main" href="javascript:;">Pages</a>
+							<ul class="sub">
+								<li><a id="vi"href="/../view">view</a></li>
+								<li><a href="/../upload">upload</a></li>
+								<li><a href="/../search">search</a></li>
+								<li><a href="/../stat">Statistics</a></li>
+							</ul>
+						</li>
+						<script type="text/javascript"> 
+    var a = getCookie("is_log")
+    var b = getCookie("username")
+    if(a == 1){
+    	document.getElementById("sign").innerHTML = "<a href="+"/logout/"+">登出</a>"
+    document.getElementById("vi").href = "/.."+"/view/"+"?username="+b
+    	}
+</script>
+						<li class="main">
+                <a class="main" href="/project/plist/">Projects</a>
+                <ul class="sub">
+                    <li><a href="/project/mlist/">member</a></li>
+                    <li><a href="/project/clist/">check</a></li>
+                    <li><a href="/project/ilist/">identify</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/viewprize">Awards</a>
+                <ul class="sub">
+                    <li><a href="/viewprize">view</a></li>
+                    <li><a href="/addprize">upload</a></li>
+                    <li><a href="/searchprize">search</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/cop/view">Coperation</a>
+                <ul class="sub">
+                    <li><a href="/cop/view">view</a></li>
+                    <li><a href="/cop/add">upload</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/learn/view">learn</a>
+                <ul class="sub">
+                    <li><a href="/learn/view">view</a></li>
+                    <li><a href="/learn/add">upload</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/viewzz">Writings</a>
+                <ul class="sub">
+                    <li><a href="/viewzz">view</a></li>
+                    <li><a href="/addzz">upload</a></li>
+                    <li><a href="/addzzaf">addauthor</a></li>
+                </ul>
+            </li>
+            <li class="main">
+                <a class="main" href="/viewzl">Patents</a>
+                <ul class="sub">
+                    <li><a href="/viewzl">view</a></li>
+                    <li><a href="/addzl">upload</a></li>
+                    <li><a href="/addzlaf">addauthor</a></li>
+                </ul>
+            </li>
+					</ul>
+				</div>
 
-<body>
-	<h1>Page Title</h1>
+				<div id="main-content">
+					<div id="container">
+						<div class="row_1">
+							<div class="page-header">
+								<h1>Search</h1>
+								<h2>search pages according to demand</h2>
+							</div>
+						</div>
+						<div class="row_2">
+							<div class="table-content">
+								<div class="table-title">
+									<h3>Search</h4>
+								</div>
+								<div class="upload">
+									<form action="" method= "POST">
+										<div class="form">
+											<label>Information</label>
+											<div class="input-div">
+												<input id="id_text" name="text" type="text" />
+											</div>
+										</div>
+										<div class="form">
+											<label>Choice</label>
+											<div class="input-div">
+												<select id="id_choice" name="choice">
+													<option value="" selected="selected"></option>
+													<option value="1">1.pdfname</option>
+													<option value="2">2.author</option>
+													<option value="3">3.jounery</option>
+													<option value="4">4.institution</option>
+												</select>
+											</div>
+										</div>
+										<div class="form">
+											<input class="submit-input" type="submit" value="Search" />
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-<form action="" method= "POST">
-	<fieldset>
-		{{uf.as_p}}
-		<input type="submit" value="submit" />
-	</fieldset>
-</form>
-
-	<footer>
-	</footer>
-
-</body>
-
-</html>
+				<div class="news">
+					<div class="new-pages"></div>
+					<div class="new-projects"></div>
+				</div>
+			</div>
+		</body>
+	</html>

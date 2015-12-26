@@ -38,6 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'smp',
+    'cop',
+    'learn',
+    'project',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./smp/','./smp/template/'],
+        'DIRS': ['./smp/','./smp/template/','templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,4 +109,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_PATH = os.path.join( os.path.dirname(__file__) , 'static' )
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "common_static"),
+    '/path/to/others/static/',
+)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+)

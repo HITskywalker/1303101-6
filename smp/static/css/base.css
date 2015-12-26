@@ -1,0 +1,396 @@
+@charset "utf-8";
+/* DIVCSS5-CSS初始化模板-www.divcss5.com */
+body, div, ul, li{margin:0; padding:0;font-style: normal;}
+/* \5B8B\4F53 代表 宋体，更多中文字体转 Unicode http://www.divcss5.com/jiqiao/j325.shtml */
+ol, ul ,li{list-style:none}
+body{color:#000000;background:#F4F4F4; text-align:center; overflow:scroll; line-height: 1.42857;font-family: "Open Sans","Helvetica Neue","Helvetica","Arial","sans-serif";}
+
+a{color:#000000;text-decoration:none} 
+a:hover{color:#BA2636}
+
+ul#nav{height:60px; background:#1B76BA; margin:0 auto; text-align:left;}
+ul#nav li{display:inline; height:60px}
+ul#nav li a{display:inline-block; padding:0 20px; height:60px; line-height:60px; color:#FFF; font-family:"\5FAE\8F6F\96C5\9ED1"; font-size:16px}
+ul#nav li a:hover{background:#0095BB}
+
+li#sign{
+	float:right;
+}
+
+div#sidebar{
+    background: #F4F4F4 none repeat scroll 0px 0px;
+    padding: 0px !important;
+    width: 250px;
+    position: absolute;
+    border-bottom: 1px solid #E7E7E7;
+    outline: medium none !important;
+    text-overflow: ellipsis;
+}
+
+ul.main{
+    list-style: outside none none;
+    margin: 0;
+    padding: 0px;
+    border-bottom: 1px solid #FFF !important;
+    border-top: 1px solid #FFF !important;
+}
+
+li.main{
+    display: block;
+    margin-left: 0px;
+    padding: 0px;
+    border: 0px none;
+}
+
+a.main{
+    border-bottom: 1px solid #FFF !important;
+    border-top: 1px solid #E7E7E7 !important;
+    color: #555 !important;
+    display: block;
+    position: relative;
+    margin: 0px;
+    border: 0px none;
+    padding: 15px 15px 15px 40px;
+    text-decoration: none;
+    text-align: left;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+a.main:hover{background:#FFF}
+
+ul.sub{
+    display: block;
+    position: relative;
+    background: #E7E7E7;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 250px;
+    list-style: outside none none;
+}
+
+.sub li{
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 1px;
+    padding-right: 250px;
+}
+
+.sub li a{
+    border: 0px;
+    color: #444;
+    font-size: 14px;
+    font-weight: 300;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 50px !important;
+    font-family: "Open Sans","Helvetica Neue","Helvetica","Arial","sans-serif";
+}
+
+div#main-content{
+    position: relative;
+    margin-left: 250px;
+}
+
+div#container{
+    background-color: #F5F6F6;
+    margin-top: 0px;
+    margin-right: 0px;
+    min-height: 700px;
+    border-left: 1px solid #CDD2D2;
+    padding-bottom: 30px;
+    width: 100% !important;
+}
+
+.row_1{
+    background: #FFF none repeat scroll 0px 0px;
+    margin-right: 0px;
+}
+
+.page-header{
+    border-bottom-color: #CDD2D2;
+    color: #000;
+    margin: 0px 0px 30px 0px;
+    min-height: 80px;
+    overflow: hidden;
+    padding: 0px 20px;
+    position: relative;
+    border-bottom: 1px solid #CDD2D2;
+}
+
+.page-header h1{
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: #666;
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: -1px;
+}
+.page-header h2{
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: #888;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0px;
+}
+
+.row_2{
+    margin-left: 25px;
+    margin-right: auto;
+    padding-top: 0px;
+    float: left;
+}
+
+.table-content{
+    border: 1px solid #5599CB;
+    border-radius: 4px;
+}
+
+.table-title{
+    color: #FFF !important;
+    background-color: #5599CB;
+    border-bottom: 1px solid #5599CB;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: left;
+}
+
+.table-title h3{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left:10px;
+}
+
+
+.table-title a{
+    margin-top: -28px;
+    float: right;
+    margin-right: 10px;
+    
+}
+
+.table-title button{
+    border: 1px;
+    border-radius: 3px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.table-box{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 6px;
+    margin-top: 15px;
+}
+
+.table-box table{
+    margin-left: 0px;
+    border: 1px solid #BBB;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.table-box table th{
+    border: 1px solid #BBB;
+    border-bottom: 1px solid #000;
+    font-size: 12px;
+    padding: 3px 18px 3px 10px;
+    color: #555;
+}
+
+.th-title{
+    width: 400px;
+}
+
+.th-author{
+    width: 180px;
+}
+
+.th-date{
+    width: auto;
+}
+
+.table-box table td{
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    border: 1px solid #BBB;
+    color: #333;
+}
+
+td#td-button1 a{
+    margin-left: 7px;
+}
+
+.upload{
+    padding: 20px;
+}
+
+.form{
+    margin-bottom: 15px;
+}
+
+.form label{
+    float: left;
+    text-align: right;
+    margin-top: 7px;
+    font-size: 17px;
+    width: 90px;
+}
+
+.input-div{
+    position: relative;
+    min-height: 1px;
+    margin-left: 90px;
+}
+
+.input-div input{
+    display: block;
+    height: 30px;
+    width: 75%;
+    padding: 3px 12px;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-size: 17px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+input#file-input{
+    font-size: 15px;
+}
+
+.submit-input{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: -5px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 5px 12px;
+    font-size: 15px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    background-color: #5E87B0;
+    color: #FFF;
+}
+
+.input-div select{
+    display: block;
+    height: 34px;
+    width: 87%;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-size: 17px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+
+.table-detail{
+    margin: 40px 80px;
+}
+
+table#detail-table{
+    border: 0px;
+}
+
+table#detail-table td{
+    font-size: 17px;
+    color: #222;
+    border: 0px;
+}
+
+table#detail-table th{
+    font-size: 17px;
+    color: #444;
+    border: 0px;
+    text-align: right;
+    padding: 5px 20px;
+}
+
+.pdf{
+    float: center;
+}
+
+.td-left{
+    text-align: right;
+    padding-left: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-right: 20px;
+    font-size: 17px;
+}
+
+.td-right{
+    text-align: left;
+}
+
+.td-right input{
+    padding: 3px 12px;
+    height: 30px;
+    font-size: 17px;
+    line-height: 1.42857;
+    color: #555;
+    background-color: #FFF;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    margin-right: 50px;
+}
+
+.td-right li{
+    float: left;
+    list-style: none;
+}
+
+.td-right li input{
+    height: auto;
+    padding: 0px;
+    margin-right: 10px;
+}
+
+.td-right select{
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    width: 70px;
+}
+
+.submit-input-2{
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 5px 12px;
+    font-size: 15px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    background-color: #5E87B0;
+    color: #FFF;
+}

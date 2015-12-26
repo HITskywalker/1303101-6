@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加奖项</title>
+</head>
+<body>
+    {% if status == True %}
+        添加成功!
+    {%  elif status == -1 %}
+        添加失败，奖项重复！
+    {% endif %}
+
+    <form action="" method="post">
+        奖项名称
+        <label><input type="text" name="prize_name"></label>
+    </br>
+        获奖时间
+        <label><input type="date" name="prize_date"></label>
+    </br>
+        奖项级别
+        {% for level in level_list %}
+            </br><label><input name="level" type="radio" value="{{ level }}" />{{ level }}</label>
+        {% endfor %}
+        <label><input type="text" name="level_other"></label>
+    </br>
+        奖项等级
+        {% for prize in prize_list %}
+            </br><label><input name="prize" type="radio" value="{{ prize }}" />{{ prize }}</label>
+        {% endfor %}
+        <label><input type="text" name="prize_other"></label>
+    </br>
+        <button type="submit">提交</button>
+    </form>
+</body>
+</html>

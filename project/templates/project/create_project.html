@@ -1,0 +1,121 @@
+{% extends "base2.html" %}
+
+{% block title %} Project - Create {% endblock %}
+
+{% block css %}
+    .jshtml{
+        position:absolute;
+        left:550px;
+        top:100px;
+    }
+    .jshtml2{
+        width:0px;
+        height:0px;
+    }
+{% endblock %}
+
+{% block content %}
+
+    <form role="form" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>项目名称</td>
+                <td><input name="project_name" type="text" class="form-control" placeholder="" value={{instance.name}} ></td>
+            </tr>
+            <tr>
+                <td>项目合同号</td>
+                <td><input name="project_num" type="text" class="form-control" placeholder="" value={{instance.project_num}}  ></td>
+            </tr>
+            <tr>
+                <td>项目来源</td>
+                <td class="form-group">
+                <select class="form-control" id="id_source" name="source">
+                    <option value="">---------</option>
+                    <option value="1.0" selected="selected">国家自然科学基金</option>
+                    <option value="0.9">国家863计划</option>
+                    <option value="0.85">国家科技支撑计划</option>
+                    <option value="0.8">国防科工</option>
+                    <option value="0.75">省科技攻关</option>
+                    <option value="0.7">企业横向</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>负责人</td>
+                <td><input name="person" type="text" class="form-control" placeholder="" value={{instance.person}} ></td>
+            </tr>
+            <tr>
+                <td>项目资金</td>
+                <td><input name="bund" type="text" class="form-control" placeholder="" value={{instance.bund}} ></td>
+            </tr>
+
+            <tr>
+                <td>开始时间</td>
+                <td><input name="start_time" type="date" value={{ instance.start_time|date:"Y-m-d" }} ></td>
+            </tr>
+            <tr>
+                <td>结束时间</td>
+                <td><input name="end_time" type="date" value={{ instance.end_time|date:"Y-m-d" }} ></td>
+            </tr>
+            <tr>
+                <td>项目人员</td>
+                <td><input type="text" name="mem_name" id="mem_name" class="form-control" placeholder="输入人名查询"></td>
+                <td>
+                    <button type="button" class="btn btn-info" onclick="show()">查找</button>
+                </td>
+            </tr>
+            <tr><div class="jshtml" id="demo2"></div></tr>
+            <tr>
+                <div class="jshtml2" id = "demo3" ></div>
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-success" value="submit">
+    </form>
+{% endblock %}
+{% block scrip %}
+    var res = [];
+    var res2 = [];
+    var source = {{ name|safe }};
+    var source2 = {{ age|safe }};
+    function show()
+    {
+        var obj = document.getElementById("mem_name");
+        var v = obj.value;
+        show2(v);
+    }
+    function show2(v)
+    {
+        x=document.getElementById("demo2");
+        var string = "<tr>";
+        if(source.indexOf(v)==-1)
+          string += "Doesn't Exist!!";
+        else{
+            string += "<th>小组成员</th>";
+            string += '<td><select class="form-control" multiple="multiple" name="project_member" id="project_memid">';
+            for(var i=0;i<source.length;i++){
+                if(source[i]==v)
+                    string+= ('<option value= "'+String(i+1)+'" >'+String(v)+String(source2[i])+'</option>');
+            }
+            string +='</select></td>';
+        }
+        string +='<input type="button" class="btn btn-info" value="确定"  onclick="show3()" />';
+        string += '</tr>'
+        x.innerHTML = string;
+    }
+    function show3(){
+        var select = document.getElementById("project_memid");
+        for(i=0;i<select.length;i++){
+            if(select.options[i].selected){
+                res.push(select[i].value);
+                res2.push(source[select[i].value-1])
+            }
+	    }
+        var ans = res.join(",");
+        alert(res2);
+        x=document.getElementById("demo3");
+        var string ="";
+        string += "<input type='text' name='nameid' value='"+ ans +"' readonly='true' style='width:0px;height:0px'><br>";
+        x.innerHTML = string;
+    }
+{% endblock %}
