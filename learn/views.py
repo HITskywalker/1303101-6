@@ -10,7 +10,7 @@ import json
 import time
 
 def view(request):
-	record_list = Learn.objects.all()
+	record_list = request.user.learn_set.all()
 	return render(request, 'learn/view.html', {'record_list':record_list})
 
 def add(request):
